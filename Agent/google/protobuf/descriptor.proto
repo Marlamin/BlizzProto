@@ -34,7 +34,6 @@ message DescriptorProto {
 	repeated .google.protobuf.DescriptorProto nested_type = 3;
 	repeated .google.protobuf.EnumDescriptorProto enum_type = 4;
 	repeated .google.protobuf.DescriptorProto.ExtensionRange extension_range = 5;
-	repeated .google.protobuf.OneofDescriptorProto oneof_decl = 8;
 	optional .google.protobuf.MessageOptions options = 7;
 }
 
@@ -73,12 +72,7 @@ message FieldDescriptorProto {
 	optional string type_name = 6;
 	optional string extendee = 2;
 	optional string default_value = 7;
-	optional int32 oneof_index = 9;
 	optional .google.protobuf.FieldOptions options = 8;
-}
-
-message OneofDescriptorProto {
-	optional string name = 1;
 }
 
 message EnumDescriptorProto {
@@ -117,13 +111,11 @@ message FileOptions {
 	optional string java_outer_classname = 8;
 	optional bool java_multiple_files = 10 [default = false];
 	optional bool java_generate_equals_and_hash = 20 [default = false];
-	optional bool java_string_check_utf8 = 27 [default = false];
 	optional .google.protobuf.FileOptions.OptimizeMode optimize_for = 9 [default = SPEED];
 	optional string go_package = 11;
 	optional bool cc_generic_services = 16 [default = false];
 	optional bool java_generic_services = 17 [default = false];
 	optional bool py_generic_services = 18 [default = false];
-	optional bool deprecated = 23 [default = false];
 	repeated .google.protobuf.UninterpretedOption uninterpreted_option = 999;
 
 	extensions 1000 to max;
@@ -132,7 +124,6 @@ message FileOptions {
 message MessageOptions {
 	optional bool message_set_wire_format = 1 [default = false];
 	optional bool no_standard_descriptor_accessor = 2 [default = false];
-	optional bool deprecated = 3 [default = false];
 	repeated .google.protobuf.UninterpretedOption uninterpreted_option = 999;
 
 	extensions 1000 to max;
@@ -157,29 +148,25 @@ message FieldOptions {
 }
 
 message EnumOptions {
-	optional bool allow_alias = 2;
-	optional bool deprecated = 3 [default = false];
+	optional bool allow_alias = 2 [default = true];
 	repeated .google.protobuf.UninterpretedOption uninterpreted_option = 999;
 
 	extensions 1000 to max;
 }
 
 message EnumValueOptions {
-	optional bool deprecated = 1 [default = false];
 	repeated .google.protobuf.UninterpretedOption uninterpreted_option = 999;
 
 	extensions 1000 to max;
 }
 
 message ServiceOptions {
-	optional bool deprecated = 33 [default = false];
 	repeated .google.protobuf.UninterpretedOption uninterpreted_option = 999;
 
 	extensions 1000 to max;
 }
 
 message MethodOptions {
-	optional bool deprecated = 33 [default = false];
 	repeated .google.protobuf.UninterpretedOption uninterpreted_option = 999;
 
 	extensions 1000 to max;
