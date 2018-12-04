@@ -1,0 +1,26 @@
+package BNET.BI;
+
+message AgentUpdatePatchOnDemand {
+	enum UpdateType {
+		UPDATETYPE_START = 0;
+		UPDATETYPE_PAUSED = 1;
+		UPDATETYPE_COMPLETE = 2;
+	}
+
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional string uid = 3;
+	optional string patch_url = 4;
+	optional double progress = 5;
+	optional uint64 download_current = 6;
+	optional uint64 download_total = 7;
+	repeated string download_tags = 8;
+	repeated double thresholds = 9;
+	repeated string locales = 10;
+	optional string region = 11;
+	optional string game_torrent = 12;
+	optional string game_mfil = 13;
+	optional bool use_old_updater = 14;
+	optional .BNET.BI.AgentUpdatePatchOnDemand.UpdateType update_type = 15 [default = UPDATETYPE_START];
+}
+

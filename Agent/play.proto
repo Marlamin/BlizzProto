@@ -1,0 +1,12 @@
+package BNET.BI;
+
+message AgentPlay {
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional string uid = 3;
+	optional string version = 4;
+	repeated string launch_args = 5;
+	optional bool run_64bit = 6;
+	optional bool has_switcher = 7;
+}
+

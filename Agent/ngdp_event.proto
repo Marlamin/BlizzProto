@@ -1,0 +1,11 @@
+package BNET.BI;
+
+message AgentNGDPEvent {
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional string productcode = 3;
+	optional string uid = 4;
+	repeated string pairs = 5;
+	optional string operation = 6;
+}
+
