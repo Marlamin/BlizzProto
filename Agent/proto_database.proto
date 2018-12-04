@@ -21,6 +21,7 @@ enum ShortcutOption {
 }
 
 enum Operation {
+	OP_NONE = -1;
 	OP_UPDATE = 0;
 	OP_BACKFILL = 1;
 	OP_REPAIR = 2;
@@ -63,6 +64,7 @@ message BaseProductState {
 	optional string currentVersionStr = 7;
 	repeated .proto_database.BuildConfig installedBuildConfig = 8;
 	repeated .proto_database.BuildConfig backgroundDownloadBuildConfig = 9;
+	optional string decryptionKey = 10;
 }
 
 message BackfillProgress {
@@ -88,16 +90,40 @@ message CachedProductState {
 	optional .proto_database.UpdateProgress updateProgress = 4;
 }
 
+message ProductOperations {
+	optional .proto_database.Operation activeOperation = 1 [default = OP_NONE];
+	optional uint64 priority = 2;
+}
+
 message ProductInstall {
 	optional string uid = 1;
 	optional string productCode = 2;
 	optional .proto_database.UserSettings settings = 3;
 	optional .proto_database.CachedProductState cachedProductState = 4;
-	repeated .proto_database.Operation activeOperations = 5;
+	optional .proto_database.ProductOperations productOperations = 5;
+}
+
+message ProductConfig {
+	optional string productCode = 1;
+	optional string metadataHash = 2;
+}
+
+message ActiveProcess {
+	optional string processName = 1;
+	optional int32 pid = 2;
+	repeated string uri = 3;
+}
+
+message DownloadSettings {
+	optional int32 downloadLimit = 1 [default = -1];
+	optional int32 backfillLimit = 2 [default = -1];
 }
 
 message Database {
 	repeated .proto_database.ProductInstall productInstall = 1;
 	repeated .proto_database.InstallHandshake activeInstalls = 2;
+	repeated .proto_database.ActiveProcess activeProcesses = 3;
+	repeated .proto_database.ProductConfig productConfigs = 4;
+	optional .proto_database.DownloadSettings downloadSettings = 5;
 }
 

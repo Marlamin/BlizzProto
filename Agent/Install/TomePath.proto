@@ -1,9 +1,0 @@
-package AgtMsg.Install;
-
-message TomePath {
-	required int32 error = 1;
-	optional string tome_dir = 2;
-	optional string tome_path = 3;
-	optional string tome_torrent = 4;
-}
-

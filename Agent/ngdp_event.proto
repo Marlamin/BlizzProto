@@ -6,5 +6,6 @@ message AgentNGDPEvent {
 	optional string productcode = 3;
 	optional string uid = 4;
 	repeated string pairs = 5;
+	optional string operation = 6;
 }
 
