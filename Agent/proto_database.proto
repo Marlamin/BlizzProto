@@ -73,6 +73,7 @@ message BackfillProgress {
 	optional double progress = 1;
 	optional bool backgrounddownload = 2;
 	optional bool paused = 3;
+	optional uint64 downloadLimit = 4;
 }
 
 message RepairProgress {
@@ -83,6 +84,8 @@ message UpdateProgress {
 	optional string lastDiscSetUsed = 1;
 	optional double progress = 2;
 	optional bool discIgnored = 3;
+	optional uint64 totalToDownload = 4 [default = 0];
+	optional uint64 downloadRemaining = 5 [default = 0];
 }
 
 message CachedProductState {
