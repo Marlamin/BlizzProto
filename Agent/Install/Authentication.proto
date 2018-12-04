@@ -1,9 +1,0 @@
-package AgtMsg.Install;
-
-message Authentication {
-	required int32 error = 1;
-	repeated string url = 2;
-	optional string authentication_key = 3;
-	optional string decryption_key_name = 4;
-}
-
