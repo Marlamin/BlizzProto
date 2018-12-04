@@ -41,6 +41,7 @@ message UserSettings {
 	optional string selectedTextLanguage = 6;
 	optional string selectedSpeechLanguage = 7;
 	repeated .proto_database.LanguageSetting languages = 8;
+	optional string gfx_override_tags = 9;
 }
 
 message InstallHandshake {
