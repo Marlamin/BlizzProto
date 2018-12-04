@@ -67,6 +67,7 @@ message BaseProductState {
 	repeated .proto_database.BuildConfig installedBuildConfig = 8;
 	repeated .proto_database.BuildConfig backgroundDownloadBuildConfig = 9;
 	optional string decryptionKey = 10;
+	repeated string completedInstallActions = 11;
 }
 
 message BackfillProgress {
