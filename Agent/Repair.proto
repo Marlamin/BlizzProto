@@ -1,0 +1,16 @@
+import "Operation.proto";
+
+package Blizzard.Telemetry.Distribution.Agent;
+
+message Repair {
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationCommon base = 1;
+	optional uint32 broken_files = 2;
+	optional bool needed_repair = 3;
+	optional bool repair_marker_present = 4;
+	optional string build_config_key = 5;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase verify_metadata = 10;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase validate_loose_files = 11;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase validate_container = 12;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase check_for_missing_data = 13;
+}
+

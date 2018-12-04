@@ -1,0 +1,7 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message DeferredDeleteFailure {
+	optional string uid = 1;
+	optional int32 count = 2;
+}
+

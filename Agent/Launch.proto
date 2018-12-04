@@ -1,0 +1,13 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message Launch {
+	optional string product = 1;
+	optional string region = 2;
+	optional string selected_locale = 3;
+	optional string selected_audio_locale = 4;
+	optional bool x64_binary = 5;
+	optional bool agent_launched = 6;
+	optional int64 remaining_bytes = 7;
+	optional int64 total_bytes = 8;
+}
+

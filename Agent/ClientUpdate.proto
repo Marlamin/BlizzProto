@@ -1,0 +1,23 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message ClientUpdate {
+	optional string product = 1;
+	optional int64 downloaded = 2;
+	optional int64 written = 3;
+	optional int64 missed_at_start = 4;
+	optional int64 invalidated = 5;
+	optional int64 downloaded_by_plugin = 6;
+	optional int64 target_of_plugin = 7;
+	optional int32 processed = 8;
+	optional int32 promoted = 9;
+	optional int32 retries = 10;
+	optional int32 verify_fail = 11;
+	optional int32 residency_changed = 12;
+	optional int32 patchable = 13;
+	optional int32 patched = 14;
+	optional int32 vfs_patch = 15;
+	optional int32 non_vfs_patch = 16;
+	optional int32 failed_to_apply = 17;
+	optional int32 failed_to_download_pkey = 18;
+}
+

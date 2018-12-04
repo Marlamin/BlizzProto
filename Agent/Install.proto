@@ -1,0 +1,16 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message Install {
+	optional string product = 1;
+	optional string region = 2;
+	optional string desktop_shortcut = 3;
+	optional string menu_shortcut = 4;
+	optional string selected_locale = 5;
+	optional string selected_audio_locale = 6;
+	optional int32 locale_count = 7;
+	optional int32 audio_locale_count = 8;
+	optional string locales = 9;
+	optional string audio_locales = 10;
+	optional string additional_tags = 11;
+}
+

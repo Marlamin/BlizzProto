@@ -1,0 +1,11 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message RetryHostInfo {
+	optional string product = 1;
+	optional string host = 2;
+	optional string addr = 3;
+	optional string path = 4;
+	optional int64 offset = 5;
+	optional int64 size = 6;
+}
+

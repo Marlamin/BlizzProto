@@ -1,0 +1,16 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message RepairDetails {
+	optional string product = 1;
+	optional int32 deleted_keys = 2;
+	optional int32 overlapped_spans = 3;
+	optional int32 files_smaller_than_header = 4;
+	optional int32 files_exceeding_max_size = 5;
+	optional int32 overlapped_records = 6;
+	optional int32 unrecognized_records = 7;
+	optional int32 short_records = 8;
+	optional int32 restored_records = 9;
+	optional int32 restored_indices = 10;
+	optional bool removed_index_files = 11;
+}
+

@@ -1,0 +1,19 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message RegionalServer {
+	optional int32 success_count = 1;
+	optional int32 fail_count = 2;
+}
+
+message PatchServiceStatistics {
+	optional .Blizzard.Telemetry.Distribution.Agent.RegionalServer us = 1;
+	optional .Blizzard.Telemetry.Distribution.Agent.RegionalServer eu = 2;
+	optional .Blizzard.Telemetry.Distribution.Agent.RegionalServer kr = 3;
+	optional .Blizzard.Telemetry.Distribution.Agent.RegionalServer cn = 4;
+	optional .Blizzard.Telemetry.Distribution.Agent.RegionalServer tw = 5;
+	optional .Blizzard.Telemetry.Distribution.Agent.RegionalServer sg = 6;
+	optional int32 other_fail_count = 7;
+	optional string other_failures = 8;
+	optional int64 run_time_in_secs = 9;
+}
+

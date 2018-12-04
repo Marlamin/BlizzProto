@@ -1,0 +1,13 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message TransparentProxy {
+	optional string product = 1;
+	optional string status = 2;
+	optional string server_path = 3;
+	optional string host_one = 4;
+	optional string host_two = 5;
+	optional int64 path_offset = 6;
+	optional int64 path_size = 7;
+	optional bool fallback = 8;
+}
+

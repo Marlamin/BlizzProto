@@ -1,0 +1,14 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message DownloadPerformance {
+	optional string product = 1;
+	optional string hostname = 2;
+	optional string hostip = 3;
+	optional float average_throughput = 4;
+	optional int64 total_bytes = 6;
+	optional int32 error3xx = 7;
+	optional int32 error4xx = 8;
+	optional int32 error404 = 9;
+	optional int32 error5xx = 10;
+}
+

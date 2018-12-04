@@ -1,0 +1,7 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message LocalCertificate {
+	optional int32 error = 1;
+	optional int32 detail = 2;
+}
+

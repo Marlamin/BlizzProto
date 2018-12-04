@@ -1,0 +1,44 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message InstalledProduct {
+	optional int32 retail_count = 1;
+	optional int32 ptr_count = 2;
+	optional int32 other_count = 3;
+	optional string other_details = 4;
+}
+
+message RunningAgentData {
+	optional int32 agent_count = 1;
+	optional int32 phx_count = 2;
+	optional int32 other_count = 3;
+	optional int32 unknown_count = 4;
+	optional int32 total_count = 5;
+	optional string other_process_list = 10;
+}
+
+message StartAgent {
+	optional string blizzard_app_version = 1;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct starcraft2 = 2;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct worldofwarcraft = 3;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct diablo3 = 4;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct overwatch = 5;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct hearthstone = 6;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct heroesofthestorm = 7;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct starcraft = 8;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct warcraft3 = 9;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct diablo2 = 10;
+	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct destiny2 = 11;
+	optional string other_products = 1000;
+	optional int32 other_product_count = 1001;
+	optional string region = 1002;
+	optional bool igr = 1003;
+	optional bool ipv6_support = 1004;
+	optional bool wmi_enabled = 1005;
+	optional string wine_version = 1010;
+	optional string database_type = 1006;
+	optional string real_os_version = 1007;
+	optional int64 download_limit = 1008;
+	optional int64 backfill_limit = 1009;
+	optional .Blizzard.Telemetry.Distribution.Agent.RunningAgentData running_agents = 1100;
+}
+

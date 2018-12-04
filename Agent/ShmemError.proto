@@ -1,0 +1,8 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message ShmemError {
+	optional string product = 1;
+	optional int32 error = 2;
+	optional string name = 3;
+}
+

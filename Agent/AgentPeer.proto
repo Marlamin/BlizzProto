@@ -1,0 +1,8 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message AgentPeer {
+	optional int32 count = 1;
+	optional string hostIDs = 2;
+	optional int32 initError = 3;
+}
+

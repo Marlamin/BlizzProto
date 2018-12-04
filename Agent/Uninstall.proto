@@ -1,0 +1,13 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message Uninstall {
+	optional string product = 1;
+	optional string region = 2;
+	optional string build_config_key = 3;
+	optional bool auto_removal = 4;
+	optional int64 free_space_prior = 5;
+	optional int64 total_drive_space = 6;
+	optional int64 install_size = 7;
+	optional int64 container_size = 8;
+}
+

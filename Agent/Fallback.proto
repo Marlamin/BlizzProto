@@ -1,0 +1,15 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message Fallback {
+	optional string product = 1;
+	optional int32 success = 2;
+	optional int64 total_bytes = 3;
+	optional int64 total_calls = 4;
+	optional int64 tier2failed = 5;
+	optional int64 diffmd5_from_other = 6;
+	optional int64 diffmd5_from_same = 7;
+	optional int64 samemd5_from_other = 8;
+	optional int64 samemd5_from_same = 9;
+	optional int64 tier1failed = 10;
+}
+

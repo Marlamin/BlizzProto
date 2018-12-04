@@ -1,0 +1,21 @@
+import "Operation.proto";
+
+package Blizzard.Telemetry.Distribution.Agent;
+
+message Update {
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationCommon base = 1;
+	optional bool ignore_media = 2;
+	optional bool is_install = 3;
+	optional bool is_playable = 4;
+	optional string media_set = 5;
+	optional string migration_source_version = 6;
+	optional string build_config_key = 7;
+	optional string prev_config_key = 8;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase initialize_client_handler = 10;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase initialize_client_update = 11;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase migration = 12;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase media = 13;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase download = 14;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase compact = 15;
+}
+

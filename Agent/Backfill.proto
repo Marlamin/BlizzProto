@@ -1,0 +1,13 @@
+import "Operation.proto";
+
+package Blizzard.Telemetry.Distribution.Agent;
+
+message Backfill {
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationCommon base = 1;
+	optional bool is_bgdl = 2;
+	optional string build_config_key = 3;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase initialize_client_handler = 10;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase initialize_client_update = 11;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase download = 12;
+}
+

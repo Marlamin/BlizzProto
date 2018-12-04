@@ -1,0 +1,32 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+enum OperationExitCode {
+	Complete = 0;
+	Cancelled = 1;
+	Failed = 2;
+}
+
+message DiskSpaceDetails {
+	optional string path = 1;
+	optional int64 free_space = 2;
+	optional int64 total_space = 3;
+}
+
+message OperationCommon {
+	optional string product = 1;
+	optional string region = 2;
+	optional bool igr = 3;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationExitCode exit_code = 4 [default = Complete];
+	optional uint32 error_code = 5;
+	optional int32 tact_error_code = 6;
+	optional string tact_error_message = 7;
+	optional .Blizzard.Telemetry.Distribution.Agent.DiskSpaceDetails out_of_space_details = 8;
+}
+
+message OperationPhase {
+	optional uint32 duration_in_ms = 1;
+	optional uint32 duration_waiting_in_ms = 2;
+	optional int64 work_completed = 3;
+	optional int64 work_total = 4;
+}
+
