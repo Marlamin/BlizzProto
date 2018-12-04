@@ -1,0 +1,10 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message BSPatch {
+	optional string product = 1;
+	optional string error = 2;
+	optional string tact_error = 3;
+	optional string pkeys = 4;
+	optional int32 count = 5;
+}
+
