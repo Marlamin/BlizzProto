@@ -1,0 +1,20 @@
+import "Install/Eula.proto";
+import "Install/Authentication.proto";
+import "Install/Language.proto";
+import "Install/GameDir.proto";
+import "Install/TomePath.proto";
+import "Install/MinSpec.proto";
+
+package AgtMsg.Install;
+
+message Handshaking {
+	optional .AgtMsg.Install.Eula eula = 1;
+	optional .AgtMsg.Install.Authentication authentication_key = 2;
+	optional .AgtMsg.Install.TomePath tome_path = 3;
+	optional .AgtMsg.Install.GameDir game_dir = 4;
+	optional .AgtMsg.Install.Language language = 5;
+	optional .AgtMsg.Install.MinSpecResponse min_spec = 6;
+	optional string shortcut = 7;
+	optional bool finalized = 8;
+}
+

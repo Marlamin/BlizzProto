@@ -1,0 +1,129 @@
+package AgtMsg.Product;
+
+enum SparseFileFlags {
+	SF_NONE = 0;
+	SF_USE_SPARSE = 1;
+	SF_USE_PLACEHOLDER = 2;
+	SF_USE_ALL = 3;
+}
+
+enum ShortcutBehavior {
+	SHORTCUT_NONE = 0;
+	SHORTCUT_USER = 1;
+	SHORTCUT_ALL_USERS = 2;
+}
+
+enum EncryptionType {
+	ENCRYPT_NONE = 0;
+	ENCRYPT_UPDATES = 1;
+	ENCRYPT_BASE = 2;
+	ENCRYPT_ALL = 3;
+}
+
+message BinaryGroup {
+	optional string regex = 1;
+	optional string relative_path = 2;
+	optional string relative_path_64 = 3;
+	optional bool switcher = 4 [default = false];
+	repeated string launch_arguments = 5;
+}
+
+message BinaryInfo {
+	optional .AgtMsg.Product.BinaryGroup game = 1;
+	optional .AgtMsg.Product.BinaryGroup editor = 2;
+	optional .AgtMsg.Product.BinaryGroup reign_of_chaos = 3;
+}
+
+message UrlMap {
+	optional string key = 1;
+	optional string value = 2;
+}
+
+message EncryptionInfo {
+	optional .AgtMsg.Product.EncryptionType type = 1 [default = ENCRYPT_NONE];
+	optional string key = 2;
+}
+
+message ConfigBlobBase {
+	message OpaqueMap {
+		optional string key = 1;
+		optional string value = 2;
+	}
+
+	optional bool alternate = 1;
+	optional string binary_launch_path = 2;
+	optional string binary_launch_path64 = 3;
+	optional int32 current_version = 4;
+	optional string decryption_key_name = 5;
+	repeated string display_locales = 6;
+	optional string download_region = 7;
+	optional bool ever_playable = 8;
+	optional int32 expansion_level = 9;
+	optional string install_dir = 10;
+	repeated string installed_locales = 11;
+	optional int64 last_played = 12;
+	repeated string launch_arguments = 13;
+	repeated .AgtMsg.Product.ConfigBlobBase.OpaqueMap opaque_product_specific = 14;
+	optional bool opt_in_feedback = 15;
+	optional string patch_url = 16;
+	optional string patch_url_beta = 17;
+	optional bool playable = 18;
+	optional string product = 19;
+	optional string region = 20;
+	optional string selected_asset_locale = 21;
+	optional string selected_locale = 22;
+	optional bool supports_multibox = 23;
+	optional bool supports_offline = 24;
+	optional bool switcher = 25;
+	repeated string tags = 26;
+	optional string uid_override = 27;
+	optional string update_method = 28;
+	optional double update_progress = 29;
+	optional string update_regex = 30;
+	optional int32 use_sparse = 31;
+	optional string last_disc_set_installed = 32;
+	optional .AgtMsg.Product.BinaryInfo binaries = 33;
+	optional bool installed = 34 [default = false];
+	optional .AgtMsg.Product.ShortcutBehavior shortcut_behavior = 35 [default = SHORTCUT_ALL_USERS];
+	repeated string installed_asset_locales = 36;
+	optional string bgdl_update_method = 37;
+	optional .AgtMsg.Product.EncryptionInfo encryption_info = 38;
+	optional string local_version = 39;
+}
+
+message ReplacementLocaleMap {
+	optional string key = 1;
+	optional string value = 2;
+}
+
+message ConfigBlobEx {
+	optional string addremove_support_url = 1;
+	optional string base_update_files_dir = 2;
+	optional bool beta = 3;
+	repeated string bgdl_mediakey_urls = 4;
+	optional string binary_version_path = 5;
+	optional string data_dir = 6;
+	optional bool fullpath_hash = 7;
+	optional string manifest_file_path = 8;
+	optional int32 migration_optional_build = 9;
+	optional int32 migration_required_build = 10 [default = -1];
+	optional string priority_file_layout = 11;
+	optional string priority_file_path = 12;
+	optional bool ptr = 13;
+	repeated string supported_locales = 14;
+	optional string shortcut_target_path = 15;
+	optional bool side_by_side_patching = 16;
+	optional string torrent_file_path = 17;
+	optional string uninstall_path = 18;
+	optional int32 universal_patch_id = 19 [default = -1];
+	optional string update_identifier = 20;
+	optional double update_playable_progress = 21;
+	optional string updater_product = 22;
+	optional bool use_old_updater = 23 [default = true];
+	optional string archive_override_subpath = 24;
+	optional bool allow_backpatch = 25 [default = false];
+	optional string migration_required_version = 26 [default = "0.0.0.0"];
+	repeated string migration_leeching_products = 27;
+	repeated .AgtMsg.Product.ReplacementLocaleMap replacement_locales = 29;
+}
+

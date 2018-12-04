@@ -1,0 +1,18 @@
+package BNET.BI;
+
+message AgentRepair {
+	enum RepairType {
+		REPAIRTYPE_START = 0;
+		REPAIRTYPE_PAUSED = 1;
+		REPAIRTYPE_CANCELED = 2;
+		REPAIRTYPE_COMPLETE = 3;
+	}
+
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional string uid = 3;
+	optional double progress = 4;
+	optional .BNET.BI.AgentRepair.RepairType repair_type = 5 [default = REPAIRTYPE_START];
+	optional uint32 result_code = 6;
+}
+
