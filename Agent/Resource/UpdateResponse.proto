@@ -1,0 +1,10 @@
+package AgtMsg.Resource;
+
+message UpdateResponse {
+	optional int32 error = 1;
+	optional string response_uri = 2;
+	optional string result_uri = 3;
+	optional string conflict_uri = 4;
+	optional string update_method = 5;
+}
+

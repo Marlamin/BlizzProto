@@ -1,0 +1,19 @@
+import "Install/MinSpec.proto";
+
+package AgtMsg.Install;
+
+message Info {
+	optional string product = 1;
+	optional string patch_url = 2;
+	optional string update_prefix = 3;
+	optional string update_method = 12;
+	optional double install_progress_percent = 4;
+	optional double tome_download_progress_percent = 5;
+	optional double install_progress_speed = 6 [default = 1];
+	repeated int64 install_progress_info = 7;
+	repeated int64 download_progress_info = 8;
+	optional bool preinstalled = 9;
+	optional bool force_install = 10;
+	optional .AgtMsg.Install.MinSpec min_spec = 11;
+}
+

@@ -1,0 +1,8 @@
+package AgtMsg.Product;
+
+message MigratePatchInfo {
+	optional string uri = 1;
+	optional string patch_path = 2;
+	optional int64 patch_size = 3;
+}
+
