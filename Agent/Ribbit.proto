@@ -18,6 +18,8 @@ message RibbitErrors {
 	optional uint32 count_summary_cert_ocsp_expired = 110;
 	optional uint32 count_summary_invalid_sequence = 111;
 	optional uint32 count_summary_info_parsing = 112;
+	optional uint32 count_summary_socket_create = 113;
+	optional uint32 count_summary_cancel = 114;
 	optional uint32 count_summary_no_cached = 200;
 	optional uint32 count_summary_failure = 201;
 	optional uint32 count_version_success = 202;
@@ -35,6 +37,8 @@ message RibbitErrors {
 	optional uint32 count_version_info_parsing = 214;
 	optional uint32 count_version_no_cached = 215;
 	optional uint32 count_version_failure = 216;
+	optional uint32 count_version_socket_create = 217;
+	optional uint32 count_version_cancel = 218;
 	optional uint32 count_bgdl_success = 300;
 	optional uint32 count_bgdl_lookup = 301;
 	optional uint32 count_bgdl_connection = 302;
@@ -50,6 +54,8 @@ message RibbitErrors {
 	optional uint32 count_bgdl_info_parsing = 312;
 	optional uint32 count_bgdl_no_cached = 313;
 	optional uint32 count_bgdl_failure = 314;
+	optional uint32 count_bgdl_socket_create = 315;
+	optional uint32 count_bgdl_cancel = 316;
 	optional uint32 count_cdn_success = 400;
 	optional uint32 count_cdn_lookup = 401;
 	optional uint32 count_cdn_connection = 402;
@@ -65,5 +71,7 @@ message RibbitErrors {
 	optional uint32 count_cdn_info_parsing = 412;
 	optional uint32 count_cdn_no_cached = 413;
 	optional uint32 count_cdn_failure = 414;
+	optional uint32 count_cdn_socket_create = 415;
+	optional uint32 count_cdn_cancel = 416;
 }
 
