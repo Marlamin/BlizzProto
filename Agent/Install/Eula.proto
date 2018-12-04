@@ -1,0 +1,8 @@
+package AgtMsg.Install;
+
+message Eula {
+	required int32 error = 1;
+	optional string url = 2;
+	optional bool eula = 3;
+}
+

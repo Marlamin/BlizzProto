@@ -1,0 +1,18 @@
+package AgtMsg.Product;
+
+message OpList {
+	message Op {
+		optional string backfill = 1;
+		optional string gamesession = 2;
+		optional string install = 3;
+		optional string modify = 4;
+		optional string move = 5;
+		optional string repair = 6;
+		optional string uninstall = 7;
+		optional string update = 8;
+		optional string version = 9;
+	}
+
+	repeated .AgtMsg.Product.OpList.Op operations = 1;
+}
+

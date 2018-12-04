@@ -1,0 +1,7 @@
+package AgtMsg.Resource;
+
+message PrioritySetting {
+	optional uint32 value = 1 [default = 700];
+	optional bool insert_at_head = 2;
+}
+

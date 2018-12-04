@@ -1,0 +1,12 @@
+package AgtMsg.Product;
+
+message UpdateInfo {
+	optional bool patch_application_complete = 1;
+	optional bool download_complete = 2;
+	optional bool background_download_available = 3;
+	optional bool background_download_complete = 4;
+	optional bool perform_ogg_to_wav = 5;
+	optional bool loose_file_patching_complete = 7;
+	optional string baseline = 6;
+}
+
