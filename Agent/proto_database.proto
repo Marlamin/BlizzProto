@@ -106,6 +106,7 @@ message ProductInstall {
 message ProductConfig {
 	optional string productCode = 1;
 	optional string metadataHash = 2;
+	optional string timestamp = 3;
 }
 
 message ActiveProcess {
