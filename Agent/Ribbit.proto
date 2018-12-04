@@ -1,10 +1,20 @@
 package Blizzard.Telemetry.Distribution.Agent;
 
+message RibbitTimingDetails {
+	optional uint32 count = 1;
+	optional uint32 total_elapsed_ms = 2;
+	optional uint32 average_elapsed_ms = 3;
+	optional uint32 minimum_elapsed_ms = 4;
+	optional uint32 maximum_elapsed_ms = 5;
+}
+
 message RibbitErrors {
 	optional string server = 1;
 	optional string token = 2;
 	optional uint32 fallback_failures = 3;
 	optional uint32 fallback_success = 4;
+	optional .Blizzard.Telemetry.Distribution.Agent.RibbitTimingDetails download_timing = 5;
+	optional .Blizzard.Telemetry.Distribution.Agent.RibbitTimingDetails verify_timing = 6;
 	optional uint32 count_summary_success = 100;
 	optional uint32 count_summary_lookup = 101;
 	optional uint32 count_summary_connection = 102;

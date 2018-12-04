@@ -1,0 +1,15 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message ContainerlessUpdate {
+	optional string product = 1;
+	optional int32 build_configuration_ms = 2;
+	optional int32 cdn_config_ms = 3;
+	optional int32 archive_index_group_ms = 4;
+	optional int32 patch_index_group_ms = 5;
+	optional int32 old_encoding_table_ms = 6;
+	optional int32 old_install_manifest_ms = 7;
+	optional int32 encoding_table_ms = 8;
+	optional int32 install_manifest_ms = 9;
+	optional int32 patch_manifest_ms = 10;
+}
+

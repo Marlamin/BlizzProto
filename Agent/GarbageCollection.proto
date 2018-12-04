@@ -2,6 +2,7 @@ package Blizzard.Telemetry.Distribution.Tact;
 
 message GarbageCollection {
 	optional string product = 1;
+	optional string operation = 4;
 	optional int64 spans_delta = 2;
 	optional int64 bytes_delta = 3;
 }

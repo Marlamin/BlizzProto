@@ -2,6 +2,7 @@ package Blizzard.Telemetry.Distribution.Tact;
 
 message Compaction {
 	optional string product = 1;
+	optional string operation = 9;
 	optional int32 processing_time = 2;
 	optional int64 estimated_compaction_bytes = 3;
 	optional float estimated_compaction_ratio = 4;

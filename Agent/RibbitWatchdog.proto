@@ -1,0 +1,7 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message RibbitWatchdog {
+	optional string server = 1;
+	optional int32 timeout = 2;
+}
+
