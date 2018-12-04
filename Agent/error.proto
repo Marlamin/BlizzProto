@@ -1,0 +1,13 @@
+package BNET.BI;
+
+message AgentError {
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional int32 error = 3;
+	optional string uid = 4;
+	optional string category = 5;
+	optional string context = 6;
+	optional string uuid = 7;
+	optional string agent_version = 8;
+}
+

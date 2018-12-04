@@ -1,0 +1,17 @@
+package BNET.BI;
+
+message AgentRegister {
+	enum RegisterType {
+		REGISTERTYPE_NEW = 0;
+		REGISTERTYPE_MOVE_FOLDER = 1;
+		REGISTERTYPE_MOVE_MACHINE = 2;
+	}
+
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional string uid = 3;
+	repeated string locales = 4;
+	optional string install_path = 5;
+	optional .BNET.BI.AgentRegister.RegisterType register_type = 6 [default = REGISTERTYPE_NEW];
+}
+

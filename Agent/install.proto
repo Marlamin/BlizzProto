@@ -1,0 +1,29 @@
+package BNET.BI;
+
+message AgentInstall {
+	enum InstallType {
+		INSTALLTYPE_INSTALL_START = 0;
+		INSTALLTYPE_INSTALL_CANCEL = 1;
+		INSTALLTYPE_INSTALL_COMPLETE = 2;
+		INSTALLTYPE_REBASE_START = 3;
+		INSTALLTYPE_REBASE_CANCEL = 4;
+		INSTALLTYPE_REBASE_COMPLETE = 5;
+		INSTALLTYPE_MIGRATE_START = 6;
+		INSTALLTYPE_MIGRATE_CANCEL = 7;
+		INSTALLTYPE_MIGRATE_COMPLETE = 8;
+		INSTALLTYPE_UPGRADE_START = 9;
+		INSTALLTYPE_UPGRADE_CANCEL = 10;
+		INSTALLTYPE_UPGRADE_COMPLETE = 11;
+	}
+
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional string uid = 3;
+	repeated string locales = 4;
+	optional string install_dir = 5;
+	optional string tome_path = 6;
+	optional string tome_dir = 7;
+	optional string tome_torrent = 8;
+	optional .BNET.BI.AgentInstall.InstallType install_type = 9 [default = INSTALLTYPE_INSTALL_START];
+}
+

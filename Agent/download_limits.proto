@@ -1,0 +1,12 @@
+package BNET.BI;
+
+message AgentDownloadLimits {
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional int32 download_limit_normal = 3;
+	optional int32 upload_limit_normal = 4;
+	optional int32 download_limit_backfill = 5;
+	optional int32 upload_limit_backfill = 6;
+	optional bool p2p_enabled = 7;
+}
+
