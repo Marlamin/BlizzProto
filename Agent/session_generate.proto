@@ -1,0 +1,8 @@
+package BNET.BI;
+
+message SessionGenerate {
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional string uuid = 3;
+}
+

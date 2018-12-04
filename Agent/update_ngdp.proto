@@ -1,0 +1,51 @@
+package BNET.BI;
+
+message AgentUpdateNextGenDataPipeline {
+	enum UpdateType {
+		UPDATETYPE_START = 0;
+		UPDATETYPE_PAUSED = 1;
+		UPDATETYPE_CANCELLED = 2;
+		UPDATETYPE_COMPLETE = 3;
+		UPDATETYPE_BACKFILL_START = 4;
+		UPDATETYPE_BACKFILL_PAUSED = 5;
+		UPDATETYPE_BACKFILL_CANCELLED = 6;
+		UPDATETYPE_BACKFILL_COMPLETE = 7;
+	}
+
+	optional uint64 session_id = 1;
+	optional uint64 timestamp = 2;
+	optional string uid = 3;
+	repeated string locales = 4;
+	optional string install_dir = 5;
+	repeated string tags = 6;
+	optional string build_config = 7;
+	optional string cdn_config = 8;
+	optional string default_cdn_config = 9;
+	optional double progress = 10;
+	optional uint32 result_code = 11;
+	optional .BNET.BI.AgentUpdateNextGenDataPipeline.UpdateType update_type = 12 [default = UPDATETYPE_START];
+	optional bool product_created = 13;
+	optional double initializing_elapsed = 14;
+	optional uint64 migration_bytes_current = 15;
+	optional uint64 migration_bytes_total = 16;
+	optional bool migration_leeching = 17;
+	optional bool migration_success = 18;
+	optional double migration_elapsed = 19;
+	optional uint64 media_install_bytes_current = 20;
+	optional uint64 media_install_bytes_total = 21;
+	optional double media_install_elapsed = 22;
+	optional bool media_install_ignore_disc = 23;
+	optional uint64 update_download_current = 24;
+	optional uint64 update_download_total = 25;
+	optional double update_download_rate = 26;
+	optional double update_download_elapsed = 27;
+	repeated double update_download_thresholds = 28;
+	repeated double update_download_thresholds_elapsed = 29;
+	optional bool update_hd_files_complete = 30;
+	repeated string asset_locales = 31;
+	optional string migration_source_version = 32;
+	optional string migration_source_install_dir = 33;
+	optional double initializing_indices_elapsed = 34;
+	optional string region = 35;
+}
+
