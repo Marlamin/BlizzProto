@@ -21,6 +21,7 @@ message OperationCommon {
 	optional int32 tact_error_code = 6;
 	optional string tact_error_message = 7;
 	optional .Blizzard.Telemetry.Distribution.Agent.DiskSpaceDetails out_of_space_details = 8;
+	optional uint32 install_path_length = 9;
 }
 
 message OperationPhase {

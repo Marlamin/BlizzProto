@@ -17,5 +17,9 @@ message Update {
 	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase media = 13;
 	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase download = 14;
 	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase compact = 15;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase collect_garbage = 16;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase container_migration = 17;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase container_copy = 18;
+	optional uint32 leeching_product_count = 100;
 }
 

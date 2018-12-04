@@ -9,5 +9,7 @@ message Backfill {
 	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase initialize_client_handler = 10;
 	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase initialize_client_update = 11;
 	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase download = 12;
+	optional .Blizzard.Telemetry.Distribution.Agent.OperationPhase container_copy = 13;
+	optional uint32 leeching_product_count = 100;
 }
 
