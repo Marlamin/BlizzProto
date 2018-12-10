@@ -22,7 +22,6 @@ message OperationCommon {
 	optional string tact_error_message = 7;
 	optional .Blizzard.Telemetry.Distribution.Agent.DiskSpaceDetails out_of_space_details = 8;
 	optional uint32 install_path_length = 9;
-	optional bool is_shared_install = 10;
 }
 
 message OperationPhase {

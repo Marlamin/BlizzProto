@@ -111,8 +111,6 @@ message ProductInstall {
 	optional .proto_database.UserSettings settings = 3;
 	optional .proto_database.CachedProductState cachedProductState = 4;
 	optional .proto_database.ProductOperations productOperations = 5;
-	optional string productFamily = 6;
-	optional bool hidden = 7 [default = false];
 }
 
 message ProductConfig {

@@ -5,11 +5,6 @@ message InstalledProduct {
 	optional int32 ptr_count = 2;
 	optional int32 other_count = 3;
 	optional string other_details = 4;
-	optional int32 competitive_count = 5;
-	optional int32 total_title_count = 6;
-	optional int32 shared_install_location_count = 7;
-	optional int32 shared_install_variant_count = 8;
-	optional int32 non_shared_install_variant_count = 9;
 }
 
 message RunningAgentData {
@@ -33,7 +28,6 @@ message StartAgent {
 	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct warcraft3 = 9;
 	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct diablo2 = 10;
 	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct destiny2 = 11;
-	optional .Blizzard.Telemetry.Distribution.Agent.InstalledProduct viper = 12;
 	optional string other_products = 1000;
 	optional int32 other_product_count = 1001;
 	optional string region = 1002;

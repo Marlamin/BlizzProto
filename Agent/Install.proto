@@ -1,12 +1,5 @@
 package Blizzard.Telemetry.Distribution.Agent;
 
-enum SharedInstallInfo {
-	NotInSharedFormat = 0;
-	NoAvailableInstall = 1;
-	SharedInstall = 2;
-	SeparateInstall = 3;
-}
-
 message Install {
 	optional string product = 1;
 	optional string region = 2;
@@ -19,7 +12,5 @@ message Install {
 	optional string locales = 9;
 	optional string audio_locales = 10;
 	optional string additional_tags = 11;
-	optional .Blizzard.Telemetry.Distribution.Agent.SharedInstallInfo shared_install_state = 12 [default = NotInSharedFormat];
-	optional bool separate_install_volume = 13;
 }
 
