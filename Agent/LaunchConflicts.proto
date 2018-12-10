@@ -1,0 +1,13 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message PotentialLaunchConflicts {
+	optional string product = 1;
+	optional string region = 2;
+	optional int32 conflicts_on_my_product = 3;
+	optional int32 conflicts_on_shared_products = 4;
+	optional int32 update_conflicts = 5;
+	optional int32 repair_conflicts = 6;
+	optional int32 uninstall_conflicts = 7;
+	optional int32 other_conflicts = 8;
+}
+
