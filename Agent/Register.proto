@@ -1,0 +1,38 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+enum RegisterResult {
+	InstallNotFound = 0;
+	NewInstall = 1;
+	PromoteHiddenInstall = 2;
+	MatchesExistingInstall = 3;
+	ReplacesExistingInstall = 4;
+}
+
+message DiscoveryDetails {
+	optional int32 count = 1;
+	optional string uids = 2;
+}
+
+message ReplaceProductDetails {
+	optional string product = 1;
+	optional .Blizzard.Telemetry.Distribution.Agent.RegisterResult result = 2 [default = InstallNotFound];
+}
+
+message RegisterGame {
+	optional bool is_single_search_path = 1;
+	optional bool has_search_path = 2;
+	optional bool discovered_builds = 3;
+	optional bool found_legacy_build = 4;
+	optional bool found_via_registry = 5;
+	optional bool request_provided_product = 6;
+	optional bool request_provided_subfolder = 7;
+	optional .Blizzard.Telemetry.Distribution.Agent.ReplaceProductDetails replace_details = 9;
+	optional .Blizzard.Telemetry.Distribution.Agent.DiscoveryDetails new_installs = 10;
+	optional .Blizzard.Telemetry.Distribution.Agent.DiscoveryDetails new_hidden_installs = 11;
+	optional .Blizzard.Telemetry.Distribution.Agent.DiscoveryDetails promoted_hidden_installs = 12;
+	optional .Blizzard.Telemetry.Distribution.Agent.DiscoveryDetails existing_install_matches = 13;
+	optional .Blizzard.Telemetry.Distribution.Agent.DiscoveryDetails existing_hidden_matches = 14;
+	optional .Blizzard.Telemetry.Distribution.Agent.DiscoveryDetails conflicting_installs = 15;
+	optional .Blizzard.Telemetry.Distribution.Agent.DiscoveryDetails replace_existing_installs = 16;
+}
+
