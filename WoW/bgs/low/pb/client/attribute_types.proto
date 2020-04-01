@@ -2,7 +2,6 @@ import "bgs/low/pb/client/entity_types.proto";
 
 package bgs.protocol;
 
-option optimize_for = CODE_SIZE;
 option java_package = "bnet.protocol";
 option java_outer_classname = "AttributeProto";
 

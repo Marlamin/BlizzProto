@@ -1,7 +1,5 @@
 package bgs.protocol.profanity.v1;
 
-option optimize_for = CODE_SIZE;
-
 message WordFilter {
 	required string type = 1;
 	required string regex = 2;

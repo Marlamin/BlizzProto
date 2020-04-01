@@ -3,11 +3,11 @@ import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.account.v1;
 
-option optimize_for = CODE_SIZE;
-
 enum IdentityVerificationStatus {
 	IDENT_NO_DATA = 0;
 	IDENT_PENDING = 1;
+	IDENT_OVER_18 = 2;
+	IDENT_UNDER_18 = 3;
 	IDENT_FAILED = 4;
 	IDENT_SUCCESS = 5;
 	IDENT_SUCC_MNL = 6;
@@ -15,7 +15,9 @@ enum IdentityVerificationStatus {
 }
 
 message AccountId {
-	required fixed32 id = 1;
+	option (message_options).custom_select_shard = true;
+
+	required fixed32 id = 1 [(valid).unsigned.exclude = 0];
 }
 
 message AccountLicense {
@@ -24,9 +26,11 @@ message AccountLicense {
 }
 
 message GameAccountHandle {
-	required fixed32 id = 1;
-	required fixed32 program = 2;
-	required uint32 region = 3;
+	option (message_options).custom_select_shard = true;
+
+	required fixed32 id = 1 [(valid).unsigned.exclude = 0];
+	required fixed32 program = 2 [(valid).unsigned.exclude = 0];
+	required uint32 region = 3 [(valid).unsigned.limits.min = 1, (valid).unsigned.limits.max = 255];
 }
 
 message AccountReference {
@@ -38,9 +42,10 @@ message AccountReference {
 }
 
 message Identity {
+	option (message_options).custom_validator = true;
+
 	optional .bgs.protocol.account.v1.AccountId account = 1;
 	optional .bgs.protocol.account.v1.GameAccountHandle game_account = 2;
-	optional .bgs.protocol.ProcessId process = 3;
 }
 
 message ProgramTag {
@@ -110,6 +115,9 @@ message AccountLevelInfo {
 	optional .bgs.protocol.account.v1.IdentityVerificationStatus identity_check_status = 12 [default = IDENT_NO_DATA];
 	optional string email = 13;
 	optional bool headless_account = 14;
+	optional bool test_account = 15;
+	optional bool is_sms_protected = 17;
+	optional uint32 ratings_board_minimum_age = 18;
 }
 
 message PrivacyInfo {
@@ -123,6 +131,7 @@ message PrivacyInfo {
 	optional bool is_visible_for_view_friends = 4;
 	optional bool is_hidden_from_friend_finder = 5;
 	optional .bgs.protocol.account.v1.PrivacyInfo.GameInfoPrivacy game_info_privacy = 6 [default = PRIVACY_FRIENDS];
+	optional bool only_allow_friend_whispers = 7;
 }
 
 message ParentalControlInfo {
@@ -132,6 +141,8 @@ message ParentalControlInfo {
 	optional bool can_receive_voice = 6;
 	optional bool can_send_voice = 7;
 	repeated bool play_schedule = 8;
+	optional bool can_join_group = 9;
+	optional bool can_use_profile = 10;
 }
 
 message GameLevelInfo {
@@ -195,7 +206,7 @@ message GameSessionLocation {
 message CAIS {
 	optional uint32 played_minutes = 1;
 	optional uint32 rested_minutes = 2;
-	optional uint64 last_heard_time = 3 [deprecated = true];
+	optional uint64 last_heard_time = 3;
 }
 
 message GameAccountList {

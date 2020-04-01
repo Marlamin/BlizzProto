@@ -2,7 +2,6 @@ import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.challenge.v1;
 
-option optimize_for = CODE_SIZE;
 option cc_generic_services = false;
 
 message ChallengeExternalRequest {

@@ -3,10 +3,11 @@ import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.resources.v1;
 
-option optimize_for = CODE_SIZE;
 option cc_generic_services = false;
 
 message ContentHandleRequest {
+	option (message_options).custom_validator = true;
+
 	required fixed32 program = 1;
 	required fixed32 stream = 2;
 	optional fixed32 version = 3 [default = 1701729619];
@@ -14,6 +15,7 @@ message ContentHandleRequest {
 
 service ResourcesService {
 	option (service_options).descriptor_name = "bnet.protocol.resources.Resources";
+	option (service_options).shard_name = "resources";
 	option (sdk_service_options).outbound = true;
 
 	rpc GetContentHandle (.bgs.protocol.resources.v1.ContentHandleRequest) returns (.bgs.protocol.ContentHandle) {

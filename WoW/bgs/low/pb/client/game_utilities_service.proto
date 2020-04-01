@@ -6,7 +6,6 @@ import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.game_utilities.v1;
 
-option optimize_for = CODE_SIZE;
 option cc_generic_services = false;
 option java_package = "bnet.protocol.game_utilities.v1";
 option java_outer_classname = "GameUtilitiesServiceProto";
@@ -81,8 +80,21 @@ message GetAllValuesForAttributeResponse {
 	repeated .bgs.protocol.Variant attribute_value = 1;
 }
 
+message RegisterUtilitiesRequest {
+	repeated .bgs.protocol.Attribute attribute = 1;
+	optional fixed32 program = 2;
+}
+
+message RegisterUtilitiesResponse {
+	optional string client_id = 1;
+}
+
+message UnregisterUtilitiesRequest {
+}
+
 service GameUtilitiesService {
 	option (service_options).descriptor_name = "bnet.protocol.game_utilities.GameUtilities";
+	option (service_options).shard_name = "game_utilities";
 	option (sdk_service_options).inbound = true;
 	option (sdk_service_options).outbound = true;
 
@@ -116,5 +128,13 @@ service GameUtilitiesService {
 
 	rpc GetAllValuesForAttribute (.bgs.protocol.game_utilities.v1.GetAllValuesForAttributeRequest) returns (.bgs.protocol.game_utilities.v1.GetAllValuesForAttributeResponse) {
 		option (method_options).id = 10;
+	}
+
+	rpc RegisterUtilities (.bgs.protocol.game_utilities.v1.RegisterUtilitiesRequest) returns (.bgs.protocol.game_utilities.v1.RegisterUtilitiesResponse) {
+		option (method_options).id = 11;
+	}
+
+	rpc UnregisterUtilities (.bgs.protocol.game_utilities.v1.UnregisterUtilitiesRequest) returns (.bgs.protocol.NO_RESPONSE) {
+		option (method_options).id = 12;
 	}
 }
