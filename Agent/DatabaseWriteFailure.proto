@@ -1,0 +1,6 @@
+package Blizzard.Telemetry.Distribution.Agent;
+
+message DatabaseWriteFailure {
+	optional int32 install_count = 2;
+}
+
