@@ -7,11 +7,20 @@ option java_package = "bnet.protocol";
 option java_outer_classname = "EntityProto";
 
 message EntityId {
-	required fixed64 high = 1 [(field_options).log = HEX];
-	required fixed64 low = 2 [(field_options).log = HEX];
+	required fixed64 high = 1 [(log) = HEX];
+	required fixed64 low = 2 [(log) = HEX];
 }
 
 message Identity {
 	optional .bgs.protocol.EntityId account_id = 1;
 	optional .bgs.protocol.EntityId game_account_id = 2;
+}
+
+message AccountInfo {
+	optional bool account_paid = 1 [default = false];
+	optional fixed32 country_id = 2 [default = 0];
+	optional string battle_tag = 3;
+	optional bool manual_review = 4 [default = false];
+	optional .bgs.protocol.Identity identity = 5;
+	optional bool account_muted = 6 [default = false];
 }
