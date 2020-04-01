@@ -90,57 +90,59 @@ message UpdateMemberStateNotification {
 }
 
 service ChannelService {
-	option (original_fully_qualified_descriptor_name) = "bnet.protocol.channel.Channel";
+	option (service_options).descriptor_name = "bnet.protocol.channel.Channel";
+	option (sdk_service_options).outbound = true;
 
 	rpc RemoveMember (.bgs.protocol.channel.v1.RemoveMemberRequest) returns (.bgs.protocol.NoData) {
-		option (method_id) = 2;
+		option (method_options).id = 2;
 	}
 
 	rpc SendMessage (.bgs.protocol.channel.v1.SendMessageRequest) returns (.bgs.protocol.NoData) {
-		option (method_id) = 3;
+		option (method_options).id = 3;
 	}
 
 	rpc UpdateChannelState (.bgs.protocol.channel.v1.UpdateChannelStateRequest) returns (.bgs.protocol.NoData) {
-		option (method_id) = 4;
+		option (method_options).id = 4;
 	}
 
 	rpc UpdateMemberState (.bgs.protocol.channel.v1.UpdateMemberStateRequest) returns (.bgs.protocol.NoData) {
-		option (method_id) = 5;
+		option (method_options).id = 5;
 	}
 
 	rpc Dissolve (.bgs.protocol.channel.v1.DissolveRequest) returns (.bgs.protocol.NoData) {
-		option (method_id) = 6;
+		option (method_options).id = 6;
 	}
 }
 
 service ChannelListener {
-	option (original_fully_qualified_descriptor_name) = "bnet.protocol.channel.ChannelSubscriber";
+	option (service_options).descriptor_name = "bnet.protocol.channel.ChannelSubscriber";
+	option (sdk_service_options).inbound = true;
 
 	rpc OnJoin (.bgs.protocol.channel.v1.JoinNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 1;
+		option (method_options).id = 1;
 	}
 
 	rpc OnMemberAdded (.bgs.protocol.channel.v1.MemberAddedNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 2;
+		option (method_options).id = 2;
 	}
 
 	rpc OnLeave (.bgs.protocol.channel.v1.LeaveNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 3;
+		option (method_options).id = 3;
 	}
 
 	rpc OnMemberRemoved (.bgs.protocol.channel.v1.MemberRemovedNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 4;
+		option (method_options).id = 4;
 	}
 
 	rpc OnSendMessage (.bgs.protocol.channel.v1.SendMessageNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 5;
+		option (method_options).id = 5;
 	}
 
 	rpc OnUpdateChannelState (.bgs.protocol.channel.v1.UpdateChannelStateNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 6;
+		option (method_options).id = 6;
 	}
 
 	rpc OnUpdateMemberState (.bgs.protocol.channel.v1.UpdateMemberStateNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 7;
+		option (method_options).id = 7;
 	}
 }

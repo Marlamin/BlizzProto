@@ -82,37 +82,39 @@ message GetAllValuesForAttributeResponse {
 }
 
 service GameUtilitiesService {
-	option (original_fully_qualified_descriptor_name) = "bnet.protocol.game_utilities.GameUtilities";
+	option (service_options).descriptor_name = "bnet.protocol.game_utilities.GameUtilities";
+	option (sdk_service_options).inbound = true;
+	option (sdk_service_options).outbound = true;
 
 	rpc ProcessClientRequest (.bgs.protocol.game_utilities.v1.ClientRequest) returns (.bgs.protocol.game_utilities.v1.ClientResponse) {
-		option (method_id) = 1;
+		option (method_options).id = 1;
 	}
 
 	rpc PresenceChannelCreated (.bgs.protocol.game_utilities.v1.PresenceChannelCreatedRequest) returns (.bgs.protocol.NoData) {
-		option (method_id) = 2;
+		option (method_options).id = 2;
 	}
 
 	rpc GetPlayerVariables (.bgs.protocol.game_utilities.v1.GetPlayerVariablesRequest) returns (.bgs.protocol.game_utilities.v1.GetPlayerVariablesResponse) {
-		option (method_id) = 3;
+		option (method_options).id = 3;
 	}
 
 	rpc ProcessServerRequest (.bgs.protocol.game_utilities.v1.ServerRequest) returns (.bgs.protocol.game_utilities.v1.ServerResponse) {
-		option (method_id) = 6;
+		option (method_options).id = 6;
 	}
 
 	rpc OnGameAccountOnline (.bgs.protocol.game_utilities.v1.GameAccountOnlineNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 7;
+		option (method_options).id = 7;
 	}
 
 	rpc OnGameAccountOffline (.bgs.protocol.game_utilities.v1.GameAccountOfflineNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 8;
+		option (method_options).id = 8;
 	}
 
 	rpc GetAchievementsFile (.bgs.protocol.game_utilities.v1.GetAchievementsFileRequest) returns (.bgs.protocol.game_utilities.v1.GetAchievementsFileResponse) {
-		option (method_id) = 9;
+		option (method_options).id = 9;
 	}
 
 	rpc GetAllValuesForAttribute (.bgs.protocol.game_utilities.v1.GetAllValuesForAttributeRequest) returns (.bgs.protocol.game_utilities.v1.GetAllValuesForAttributeResponse) {
-		option (method_id) = 10;
+		option (method_options).id = 10;
 	}
 }

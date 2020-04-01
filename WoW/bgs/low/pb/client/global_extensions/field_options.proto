@@ -7,10 +7,15 @@ option java_package = "bnet.protocol";
 option java_outer_classname = "FieldOptionsProto";
 
 extend .google.protobuf.FieldOptions {
-	optional .bgs.protocol.LogOption log = 50000 [default = HIDDEN];
+	optional .bgs.protocol.BGSFieldOptions field_options = 90000;
 }
 
 enum LogOption {
 	HIDDEN = 1;
 	HEX = 2;
+}
+
+message BGSFieldOptions {
+	optional .bgs.protocol.LogOption log = 1 [default = HIDDEN];
+	optional bool shard_key = 2;
 }
