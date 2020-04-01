@@ -7,5 +7,9 @@ option java_package = "bnet.protocol";
 option java_outer_classname = "MethodOptionsProto";
 
 extend .google.protobuf.MethodOptions {
-	optional uint32 method_id = 50000;
+	optional .bgs.protocol.BGSMethodOptions method_options = 90000;
+}
+
+message BGSMethodOptions {
+	optional uint32 id = 1;
 }
