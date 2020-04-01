@@ -36,6 +36,11 @@ message ErrorInfo {
 	required uint32 method_id = 4;
 }
 
+message FanoutTarget {
+	optional string client_id = 1;
+	optional bytes key = 2;
+}
+
 message Header {
 	required uint32 service_id = 1;
 	optional uint32 method_id = 2;
@@ -49,6 +54,8 @@ message Header {
 	repeated .bgs.protocol.ProcessId forward_targets = 10;
 	optional fixed32 service_hash = 11;
 	optional string client_id = 13;
+	repeated .bgs.protocol.FanoutTarget fanout_target = 14;
+	repeated string client_id_fanout_target = 15;
 }
 
 message KafkaHeader {
