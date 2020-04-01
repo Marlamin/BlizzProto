@@ -5,7 +5,6 @@ message IdentifierInfo {
 	optional string device_id = 102;
 	optional string advertising_id = 103;
 	optional string bgs_identity = 104;
-	optional string unity_identity = 105;
 	optional string primary_disk_id = 201;
 	optional string base_board_id = 202;
 	optional string bios_id = 203;
