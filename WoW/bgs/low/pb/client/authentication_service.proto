@@ -5,6 +5,7 @@ import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.authentication.v1;
 
+option optimize_for = CODE_SIZE;
 option cc_generic_services = false;
 
 message ModuleLoadRequest {
@@ -31,6 +32,7 @@ message LogonRequest {
 	optional int32 application_version = 6;
 	optional bool public_computer = 7;
 	optional bool allow_logon_queue_notifications = 10 [default = false];
+	optional bool web_client_verification = 11 [default = false];
 	optional bytes cached_web_credentials = 12;
 	optional string user_agent = 14;
 	optional string device_id = 15;
@@ -47,7 +49,6 @@ message LogonResult {
 	optional string geoip_country = 8;
 	optional bytes session_key = 9;
 	optional bool restricted_mode = 10;
-	optional string client_id = 11;
 }
 
 message GenerateSSOTokenRequest {
