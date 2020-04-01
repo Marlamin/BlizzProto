@@ -15,6 +15,7 @@ message RibbitErrors {
 	optional uint32 fallback_success = 4;
 	optional .Blizzard.Telemetry.Distribution.Agent.RibbitTimingDetails download_timing = 5;
 	optional .Blizzard.Telemetry.Distribution.Agent.RibbitTimingDetails verify_timing = 6;
+	optional uint32 count_certificate_corruption = 7;
 	optional uint32 count_summary_success = 100;
 	optional uint32 count_summary_lookup = 101;
 	optional uint32 count_summary_connection = 102;

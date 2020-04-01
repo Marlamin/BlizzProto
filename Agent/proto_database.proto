@@ -118,7 +118,6 @@ message ProductInstall {
 message ProductConfig {
 	optional string productCode = 1;
 	optional string metadataHash = 2;
-	optional string timestamp = 3;
 }
 
 message ActiveProcess {
@@ -128,8 +127,8 @@ message ActiveProcess {
 }
 
 message DownloadSettings {
-	optional int32 downloadLimit = 1 [default = -1];
-	optional int32 backfillLimit = 2 [default = -1];
+	optional int64 downloadLimit = 1 [default = -1];
+	optional int64 backfillLimit = 2 [default = -1];
 }
 
 message Database {
