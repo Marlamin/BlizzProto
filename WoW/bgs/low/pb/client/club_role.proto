@@ -2,8 +2,6 @@ import "bgs/low/pb/client/role_types.proto";
 
 package bgs.protocol.club.v1;
 
-option optimize_for = SPEED;
-
 message ClubPrivilegeSet {
 	optional bool can_destroy = 1;
 	optional bool can_set_attribute = 10;

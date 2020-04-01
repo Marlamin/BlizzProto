@@ -3,7 +3,6 @@ import "bgs/low/pb/client/club_stream.proto";
 
 package bgs.protocol.club.v1.membership;
 
-option optimize_for = SPEED;
 option cc_generic_services = false;
 
 message SubscribeRequest {
@@ -52,6 +51,7 @@ message AdvanceStreamMentionViewTimeRequest {
 
 service ClubMembershipService {
 	option (service_options).descriptor_name = "bnet.protocol.club.v1.ClubMembershipService";
+	option (service_options).shard_name = "club_membership";
 	option (sdk_service_options).outbound = true;
 	option (sdk_service_options).use_client_id = true;
 

@@ -1,7 +1,5 @@
 package bgs.protocol;
 
-option optimize_for = SPEED;
-
 enum TypingIndicator {
 	TYPING_START = 0;
 	TYPING_STOP = 1;

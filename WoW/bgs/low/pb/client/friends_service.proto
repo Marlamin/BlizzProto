@@ -6,7 +6,6 @@ import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.friends.v1;
 
-option optimize_for = SPEED;
 option cc_generic_services = false;
 option java_package = "bnet.protocol.friends.v1";
 option java_outer_classname = "FriendsServiceProto";
@@ -124,6 +123,7 @@ message SentInvitationRemovedNotification {
 
 service FriendsService {
 	option (service_options).descriptor_name = "bnet.protocol.friends.FriendsService";
+	option (service_options).shard_name = "friends";
 	option (sdk_service_options).outbound = true;
 
 	rpc Subscribe (.bgs.protocol.friends.v1.SubscribeRequest) returns (.bgs.protocol.friends.v1.SubscribeResponse) {

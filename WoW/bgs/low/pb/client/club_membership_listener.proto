@@ -2,7 +2,6 @@ import "bgs/low/pb/client/club_types.proto";
 
 package bgs.protocol.club.v1.membership;
 
-option optimize_for = SPEED;
 option cc_generic_services = false;
 
 message ClubAddedNotification {

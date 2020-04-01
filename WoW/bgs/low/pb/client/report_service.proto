@@ -4,7 +4,6 @@ import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.report.v1;
 
-option optimize_for = SPEED;
 option cc_generic_services = false;
 
 message SendReportRequest {
@@ -20,6 +19,7 @@ message SubmitReportRequest {
 
 service ReportService {
 	option (service_options).descriptor_name = "bnet.protocol.report.ReportService";
+	option (service_options).shard_name = "report";
 	option (sdk_service_options).outbound = true;
 
 	rpc SendReport (.bgs.protocol.report.v1.SendReportRequest) returns (.bgs.protocol.NoData) {

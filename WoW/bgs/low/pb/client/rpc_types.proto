@@ -5,7 +5,6 @@ import public "bgs/low/pb/client/global_extensions/service_options.proto";
 
 package bgs.protocol;
 
-option optimize_for = SPEED;
 option java_package = "bnet.protocol";
 option java_outer_classname = "RpcProto";
 

@@ -2,7 +2,6 @@ import "google/protobuf/descriptor.proto";
 
 package bgs.protocol;
 
-option optimize_for = SPEED;
 option java_package = "bnet.protocol";
 option java_outer_classname = "ServiceOptionsProto";
 
@@ -14,8 +13,7 @@ extend .google.protobuf.ServiceOptions {
 message BGSServiceOptions {
 	optional string descriptor_name = 1;
 	optional uint32 version = 4;
-	optional bool use_forwarder = 5;
-	optional string shard_name = 6;
+	optional string shard_name = 5;
 }
 
 message SDKServiceOptions {

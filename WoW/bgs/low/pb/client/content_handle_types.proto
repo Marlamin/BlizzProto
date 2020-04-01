@@ -1,6 +1,5 @@
 package bgs.protocol;
 
-option optimize_for = SPEED;
 option java_package = "bnet.protocol";
 option java_outer_classname = "ContentHandleProto";
 

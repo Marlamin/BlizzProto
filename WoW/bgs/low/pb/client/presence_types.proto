@@ -4,8 +4,6 @@ import "bgs/low/pb/client/channel_types.proto";
 
 package bgs.protocol.presence.v1;
 
-option optimize_for = SPEED;
-
 message RichPresenceLocalizationKey {
 	required fixed32 program = 1;
 	required fixed32 stream = 2;

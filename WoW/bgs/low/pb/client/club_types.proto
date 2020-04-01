@@ -16,5 +16,3 @@ import public "bgs/low/pb/client/voice_types.proto";
 import public "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.club.v1;
-
-option optimize_for = SPEED;

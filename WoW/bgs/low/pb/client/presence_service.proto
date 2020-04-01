@@ -4,7 +4,6 @@ import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.presence.v1;
 
-option optimize_for = SPEED;
 option cc_generic_services = false;
 
 message SubscribeRequest {
@@ -72,6 +71,7 @@ message BatchUnsubscribeRequest {
 
 service PresenceService {
 	option (service_options).descriptor_name = "bnet.protocol.presence.PresenceService";
+	option (service_options).shard_name = "presence";
 	option (sdk_service_options).outbound = true;
 
 	rpc Subscribe (.bgs.protocol.presence.v1.SubscribeRequest) returns (.bgs.protocol.NoData) {

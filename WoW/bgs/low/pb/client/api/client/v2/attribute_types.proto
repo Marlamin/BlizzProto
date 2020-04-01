@@ -1,7 +1,5 @@
 package bgs.protocol.v2;
 
-option optimize_for = SPEED;
-
 message Variant {
 	oneof type {
 		bool bool_value = 1;

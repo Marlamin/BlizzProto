@@ -2,8 +2,6 @@ import public "bgs/low/pb/client/club_types.proto";
 
 package bgs.protocol.club.v1;
 
-option optimize_for = SPEED;
-
 message SubscribeRequest {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional uint64 club_id = 2;
@@ -17,6 +15,10 @@ message UnsubscribeRequest {
 message CreateRequest {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.ClubCreateOptions options = 2;
+}
+
+message CreateResponse {
+	optional uint64 club_id = 1;
 }
 
 message DestroyRequest {
