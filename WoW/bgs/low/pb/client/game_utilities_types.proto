@@ -3,7 +3,7 @@ import "bgs/low/pb/client/entity_types.proto";
 
 package bgs.protocol.game_utilities.v1;
 
-option optimize_for = SPEED;
+option optimize_for = CODE_SIZE;
 option java_package = "bnet.protocol.game_utilities.v1";
 option java_outer_classname = "GameUtilitiesTypesProto";
 

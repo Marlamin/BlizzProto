@@ -3,7 +3,7 @@ import "bgs/low/pb/client/attribute_types.proto";
 
 package bgs.protocol.user_manager.v1;
 
-option optimize_for = SPEED;
+option optimize_for = CODE_SIZE;
 
 message RecentPlayer {
 	required .bgs.protocol.EntityId entity_id = 1;
