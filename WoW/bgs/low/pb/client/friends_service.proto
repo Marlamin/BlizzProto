@@ -1,11 +1,13 @@
 import "bgs/low/pb/client/attribute_types.proto";
 import "bgs/low/pb/client/entity_types.proto";
+import "bgs/low/pb/client/account_types.proto";
 import "bgs/low/pb/client/friends_types.proto";
 import "bgs/low/pb/client/invitation_types.proto";
 import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.friends.v1;
 
+option optimize_for = CODE_SIZE;
 option cc_generic_services = false;
 option java_package = "bnet.protocol.friends.v1";
 option java_outer_classname = "FriendsServiceProto";
@@ -14,13 +16,11 @@ option java_generic_services = true;
 message SubscribeRequest {
 	optional .bgs.protocol.EntityId agent_id = 1;
 	required uint64 object_id = 2;
-	optional .bgs.protocol.ObjectAddress forward = 3 [deprecated = true];
 }
 
 message UnsubscribeRequest {
 	optional .bgs.protocol.EntityId agent_id = 1;
 	optional uint64 object_id = 2;
-	optional .bgs.protocol.ObjectAddress forward = 3 [deprecated = true];
 }
 
 message SendInvitationRequest {
@@ -48,7 +48,6 @@ message DeclineInvitationRequest {
 message IgnoreInvitationRequest {
 	optional .bgs.protocol.EntityId agent_id = 1;
 	required fixed64 invitation_id = 3;
-	optional fixed32 program = 4;
 }
 
 message RemoveFriendRequest {
@@ -75,6 +74,12 @@ message UpdateFriendStateRequest {
 	repeated .bgs.protocol.Attribute attribute = 3;
 }
 
+message SetAttributeRequest {
+	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
+	optional .bgs.protocol.account.v1.AccountId target_id = 2;
+	repeated .bgs.protocol.Attribute attribute = 3;
+}
+
 message GetFriendListRequest {
 	optional .bgs.protocol.EntityId agent_id = 2;
 }
@@ -92,38 +97,32 @@ message CreateFriendshipRequest {
 message FriendNotification {
 	required .bgs.protocol.friends.v1.Friend target = 1;
 	optional .bgs.protocol.EntityId account_id = 5;
-	optional .bgs.protocol.ObjectAddress forward = 6 [deprecated = true];
 }
 
 message UpdateFriendStateNotification {
 	required .bgs.protocol.friends.v1.Friend changed_friend = 1;
 	optional .bgs.protocol.EntityId account_id = 5;
-	optional .bgs.protocol.ObjectAddress forward = 6 [deprecated = true];
 }
 
 message InvitationNotification {
 	required .bgs.protocol.friends.v1.ReceivedInvitation invitation = 1;
 	optional uint32 reason = 3 [default = 0];
 	optional .bgs.protocol.EntityId account_id = 5;
-	optional .bgs.protocol.ObjectAddress forward = 6 [deprecated = true];
 }
 
 message SentInvitationAddedNotification {
 	optional .bgs.protocol.EntityId account_id = 1;
 	optional .bgs.protocol.friends.v1.SentInvitation invitation = 2;
-	optional .bgs.protocol.ObjectAddress forward = 3 [deprecated = true];
 }
 
 message SentInvitationRemovedNotification {
 	optional .bgs.protocol.EntityId account_id = 1;
 	optional fixed64 invitation_id = 2;
 	optional uint32 reason = 3;
-	optional .bgs.protocol.ObjectAddress forward = 4 [deprecated = true];
 }
 
 service FriendsService {
 	option (service_options).descriptor_name = "bnet.protocol.friends.FriendsService";
-	option (service_options).shard_name = "friends";
 	option (sdk_service_options).outbound = true;
 
 	rpc Subscribe (.bgs.protocol.friends.v1.SubscribeRequest) returns (.bgs.protocol.friends.v1.SubscribeResponse) {
@@ -177,6 +176,11 @@ service FriendsService {
 
 	rpc CreateFriendship (.bgs.protocol.friends.v1.CreateFriendshipRequest) returns (.bgs.protocol.NoData) {
 		option (method_options).id = 14;
+	}
+
+	rpc SetAttribute (.bgs.protocol.friends.v1.SetAttributeRequest) returns (.bgs.protocol.NoData) {
+		option deprecated = true;
+		option (method_options).id = 15;
 	}
 }
 
