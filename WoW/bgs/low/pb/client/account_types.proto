@@ -55,6 +55,7 @@ message Identity {
 
 	optional .bgs.protocol.account.v1.AccountId account = 1;
 	optional .bgs.protocol.account.v1.GameAccountHandle game_account = 2;
+	optional .bgs.protocol.ProcessId process = 3;
 }
 
 message ProgramTag {
