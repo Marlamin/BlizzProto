@@ -12,4 +12,5 @@ extend .google.protobuf.MessageOptions {
 
 message BGSMessageOptions {
 	optional bool custom_select_shard = 1;
+	optional bool custom_validator = 2;
 }

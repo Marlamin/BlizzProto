@@ -42,6 +42,7 @@ message JoinNotification {
 	required .bgs.protocol.channel.v1.ChannelState channel_state = 3;
 	optional .bgs.protocol.channel.v1.ChannelId channel_id = 4;
 	optional .bgs.protocol.account.v1.Identity subscriber = 5;
+	optional .bgs.protocol.account.v1.AccountId subscriber_id = 6;
 }
 
 message MemberAddedNotification {
@@ -80,6 +81,7 @@ message UpdateChannelStateNotification {
 	required .bgs.protocol.channel.v1.ChannelState state_change = 2;
 	optional .bgs.protocol.channel.v1.ChannelId channel_id = 3;
 	optional .bgs.protocol.account.v1.Identity subscriber = 4;
+	optional .bgs.protocol.account.v1.AccountId subscriber_id = 5;
 }
 
 message UpdateMemberStateNotification {
