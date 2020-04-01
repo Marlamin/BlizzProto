@@ -1,0 +1,13 @@
+import "telemetry_extension_identifier.proto";
+
+package Blizzard.Telemetry.Extension;
+
+extend .Blizzard.Telemetry.Extension.Unknown {
+	optional .Blizzard.Telemetry.Extension.IdentifierInfo identifier = 1000;
+}
+
+message Unknown {
+
+	extensions 1000 to max;
+}
+

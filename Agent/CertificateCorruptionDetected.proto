@@ -1,7 +1,0 @@
-package Blizzard.Telemetry.Distribution.Tact;
-
-message CertificateCorruptionDetected {
-	optional uint64 struct_address_64 = 1;
-	optional string data = 2;
-}
-
