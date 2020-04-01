@@ -25,7 +25,6 @@ message InvitationSuggestion {
 	required .bgs.protocol.EntityId suggestee_id = 3;
 	optional string suggester_name = 4;
 	optional string suggestee_name = 5;
-	optional .bgs.protocol.EntityId suggester_account_id = 6;
 }
 
 message InvitationTarget {
@@ -52,7 +51,6 @@ message SendInvitationRequest {
 }
 
 message SendInvitationResponse {
-	optional .bgs.protocol.Invitation invitation = 2;
 }
 
 message UpdateInvitationRequest {

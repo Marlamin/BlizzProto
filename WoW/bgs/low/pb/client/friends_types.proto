@@ -1,6 +1,7 @@
 import "bgs/low/pb/client/attribute_types.proto";
 import "bgs/low/pb/client/entity_types.proto";
 import "bgs/low/pb/client/invitation_types.proto";
+import "bgs/low/pb/client/role_types.proto";
 
 package bgs.protocol.friends.v1;
 
@@ -10,6 +11,14 @@ option java_outer_classname = "FriendsTypesProto";
 
 message Friend {
 	required .bgs.protocol.EntityId account_id = 1;
+	repeated .bgs.protocol.Attribute attribute = 2;
+	repeated uint32 role = 3 [packed = true];
+	optional uint64 privileges = 4 [default = 0];
+	optional uint64 attributes_epoch = 5;
+}
+
+message FriendOfFriend {
+	optional .bgs.protocol.EntityId account_id = 1;
 	repeated .bgs.protocol.Attribute attribute = 2;
 	repeated uint32 role = 3 [packed = true];
 	optional uint64 privileges = 4 [default = 0];
@@ -39,4 +48,14 @@ message FriendInvitationParams {
 	optional string invitee_display_name = 5;
 	repeated uint32 role = 6 [packed = true];
 	repeated uint32 previous_role_deprecated = 7 [deprecated = true, packed = true];
+}
+
+message SubscribeResponse {
+	optional uint32 max_friends = 1;
+	optional uint32 max_received_invitations = 2;
+	optional uint32 max_sent_invitations = 3;
+	repeated .bgs.protocol.Role role = 4;
+	repeated .bgs.protocol.friends.v1.Friend friends = 5;
+	repeated .bgs.protocol.Invitation sent_invitations = 6;
+	repeated .bgs.protocol.Invitation received_invitations = 7;
 }

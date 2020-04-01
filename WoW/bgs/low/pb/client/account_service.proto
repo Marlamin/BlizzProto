@@ -9,6 +9,7 @@ option cc_generic_services = false;
 
 message GetAccountRequest {
 	optional .bgs.protocol.account.v1.AccountReference ref = 1;
+	optional bool reload = 2 [default = false];
 	optional bool fetch_all = 10 [default = false];
 	optional bool fetch_blob = 11 [default = false];
 	optional bool fetch_id = 12 [default = false];
@@ -17,6 +18,7 @@ message GetAccountRequest {
 	optional bool fetch_full_name = 15 [default = false];
 	optional bool fetch_links = 16 [default = false];
 	optional bool fetch_parental_controls = 17 [default = false];
+	optional bool fetch_cais_id = 18 [default = false];
 }
 
 message GetAccountResponse {
@@ -27,13 +29,20 @@ message GetAccountResponse {
 	optional string full_name = 15;
 	repeated .bgs.protocol.account.v1.GameAccountLink links = 16;
 	optional .bgs.protocol.account.v1.ParentalControlInfo parental_control_info = 17;
+	optional string cais_id = 18;
 }
 
 message CreateGameAccountRequest {
 	optional .bgs.protocol.account.v1.AccountId account = 1;
 	optional uint32 region = 2;
 	optional fixed32 program = 3;
-	optional uint32 realm_permissions = 4 [default = 1];
+	optional uint32 realm_permissions = 4 [default = 0];
+	optional uint32 account_region = 5;
+	optional fixed32 platform = 6;
+}
+
+message CreateGameAccountResponse {
+	optional .bgs.protocol.account.v1.GameAccountHandle game_account = 1;
 }
 
 message CacheExpireRequest {
@@ -164,6 +173,28 @@ message GetAuthorizedDataResponse {
 	repeated .bgs.protocol.account.v1.AuthorizedData data = 1;
 }
 
+message UpdateParentalControlsAndCAISRequest {
+	optional .bgs.protocol.account.v1.AccountId account = 1;
+	optional .bgs.protocol.account.v1.ParentalControlInfo parental_control_info = 2;
+	optional string cais_id = 3;
+	optional uint64 session_start_time = 4;
+	optional uint64 start_time = 5;
+	optional uint64 end_time = 6;
+}
+
+message QueueDeductRecordRequest {
+	optional .bgs.protocol.account.v1.DeductRecord deduct_record = 1;
+}
+
+message GetGameAccountRequest {
+	optional .bgs.protocol.account.v1.GameAccountHandle game_account = 1;
+	optional bool reload = 2 [default = false];
+}
+
+message GetGameAccountResponse {
+	optional .bgs.protocol.account.v1.GameAccountBlob blob = 1;
+}
+
 message AccountStateNotification {
 	optional .bgs.protocol.account.v1.AccountState account_state = 1;
 	optional uint64 subscriber_id = 2;
@@ -192,7 +223,7 @@ message GameAccountSessionNotification {
 service AccountService {
 	option (original_fully_qualified_descriptor_name) = "bnet.protocol.account.AccountService";
 
-	rpc GetGameAccount (.bgs.protocol.account.v1.GameAccountHandle) returns (.bgs.protocol.account.v1.GameAccountBlob) {
+	rpc GetGameAccountBlob (.bgs.protocol.account.v1.GameAccountHandle) returns (.bgs.protocol.account.v1.GameAccountBlob) {
 		option (method_id) = 12;
 	}
 
@@ -213,6 +244,7 @@ service AccountService {
 	}
 
 	rpc CredentialUpdate (.bgs.protocol.account.v1.CredentialUpdateRequest) returns (.bgs.protocol.account.v1.CredentialUpdateResponse) {
+		option deprecated = true;
 		option (method_id) = 21;
 	}
 
@@ -262,6 +294,22 @@ service AccountService {
 
 	rpc GameAccountFlagUpdate (.bgs.protocol.account.v1.GameAccountFlagUpdateRequest) returns (.bgs.protocol.NO_RESPONSE) {
 		option (method_id) = 39;
+	}
+
+	rpc UpdateParentalControlsAndCAIS (.bgs.protocol.account.v1.UpdateParentalControlsAndCAISRequest) returns (.bgs.protocol.NoData) {
+		option (method_id) = 40;
+	}
+
+	rpc CreateGameAccount2 (.bgs.protocol.account.v1.CreateGameAccountRequest) returns (.bgs.protocol.account.v1.CreateGameAccountResponse) {
+		option (method_id) = 41;
+	}
+
+	rpc GetGameAccount (.bgs.protocol.account.v1.GetGameAccountRequest) returns (.bgs.protocol.account.v1.GetGameAccountResponse) {
+		option (method_id) = 42;
+	}
+
+	rpc QueueDeductRecord (.bgs.protocol.account.v1.QueueDeductRecordRequest) returns (.bgs.protocol.NoData) {
+		option (method_id) = 43;
 	}
 }
 
