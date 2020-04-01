@@ -6,7 +6,7 @@ package bgs.protocol.resources.v1;
 option cc_generic_services = false;
 
 message ContentHandleRequest {
-	option (message_options).custom_select_shard = true;
+	option (message_options).custom_validator = true;
 
 	required fixed32 program = 1;
 	required fixed32 stream = 2;
@@ -15,6 +15,7 @@ message ContentHandleRequest {
 
 service ResourcesService {
 	option (service_options).descriptor_name = "bnet.protocol.resources.Resources";
+	option (service_options).shard_name = "resources";
 	option (sdk_service_options).outbound = true;
 
 	rpc GetContentHandle (.bgs.protocol.resources.v1.ContentHandleRequest) returns (.bgs.protocol.ContentHandle) {

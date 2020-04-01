@@ -117,15 +117,6 @@ message GetAuthorizedDataResponse {
 	repeated .bgs.protocol.account.v1.AuthorizedData data = 1;
 }
 
-message UpdateParentalControlsAndCAISRequest {
-	optional .bgs.protocol.account.v1.AccountId account = 1;
-	optional .bgs.protocol.account.v1.ParentalControlInfo parental_control_info = 2;
-	optional string cais_id = 3;
-	optional uint64 session_start_time = 4;
-	optional uint64 start_time = 5;
-	optional uint64 end_time = 6;
-}
-
 message AccountStateNotification {
 	optional .bgs.protocol.account.v1.AccountState account_state = 1;
 	optional uint64 subscriber_id = 2 [deprecated = true];
@@ -153,6 +144,7 @@ message GameAccountSessionNotification {
 
 service AccountService {
 	option (service_options).descriptor_name = "bnet.protocol.account.AccountService";
+	option (service_options).shard_name = "account";
 	option (sdk_service_options).outbound = true;
 
 	rpc ResolveAccount (.bgs.protocol.account.v1.ResolveAccountRequest) returns (.bgs.protocol.account.v1.ResolveAccountResponse) {
