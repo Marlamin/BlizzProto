@@ -7,8 +7,6 @@ package bgs.protocol.report.v2;
 option cc_generic_services = false;
 
 message SubmitReportRequest {
-	option (message_options).custom_validator = true;
-
 	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
 	optional string user_description = 2;
 	optional uint32 program = 3;
