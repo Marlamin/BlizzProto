@@ -43,6 +43,7 @@ message GetClubTypeRequest {
 message GetClubTypeResponse {
 	optional .bgs.protocol.club.v1.UniqueClubType type = 1;
 	optional .bgs.protocol.club.v1.ClubRoleSet role_set = 2;
+	optional .bgs.protocol.club.v1.ClubTypeRangeSet range_set = 3;
 }
 
 message UpdateClubStateRequest {

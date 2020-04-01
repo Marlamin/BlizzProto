@@ -10,8 +10,8 @@ message SubscribeRequest {
 	optional .bgs.protocol.EntityId agent_id = 1;
 	required .bgs.protocol.EntityId entity_id = 2;
 	required uint64 object_id = 3;
-	repeated fixed32 program = 4;
-	repeated .bgs.protocol.presence.v1.FieldKey key = 6;
+	repeated fixed32 program = 4 [(valid).repeated.size.min = 1, (valid).repeated.size.max = 100];
+	repeated .bgs.protocol.presence.v1.FieldKey key = 6 [(valid).repeated.size.min = 1, (valid).repeated.size.max = 500];
 }
 
 message SubscribeNotificationRequest {
@@ -27,7 +27,7 @@ message UnsubscribeRequest {
 message UpdateRequest {
 	required .bgs.protocol.EntityId entity_id = 1;
 	repeated .bgs.protocol.presence.v1.FieldOperation field_operation = 2;
-	optional bool no_create = 3 [default = false];
+	optional bool no_create = 3;
 	optional .bgs.protocol.EntityId agent_id = 4;
 }
 
@@ -43,14 +43,14 @@ message QueryResponse {
 
 message OwnershipRequest {
 	required .bgs.protocol.EntityId entity_id = 1;
-	optional bool release_ownership = 2 [default = false];
+	optional bool release_ownership = 2;
 }
 
 message BatchSubscribeRequest {
 	optional .bgs.protocol.EntityId agent_id = 1;
-	repeated .bgs.protocol.EntityId entity_id = 2;
-	repeated fixed32 program = 3;
-	repeated .bgs.protocol.presence.v1.FieldKey key = 4;
+	repeated .bgs.protocol.EntityId entity_id = 2 [(valid).repeated.size.min = 1, (valid).repeated.size.max = 250];
+	repeated fixed32 program = 3 [(valid).repeated.size.min = 1, (valid).repeated.size.max = 100];
+	repeated .bgs.protocol.presence.v1.FieldKey key = 4 [(valid).repeated.size.min = 1, (valid).repeated.size.max = 500];
 	optional uint64 object_id = 5;
 }
 
@@ -65,7 +65,7 @@ message BatchSubscribeResponse {
 
 message BatchUnsubscribeRequest {
 	optional .bgs.protocol.EntityId agent_id = 1;
-	repeated .bgs.protocol.EntityId entity_id = 2;
+	repeated .bgs.protocol.EntityId entity_id = 2 [(valid).repeated.size.min = 1, (valid).repeated.size.max = 250];
 	optional uint64 object_id = 3;
 }
 

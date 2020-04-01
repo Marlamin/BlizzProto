@@ -1,6 +1,7 @@
 import public "bgs/low/pb/client/club_membership_types.proto";
 import public "bgs/low/pb/client/club_enum.proto";
 import public "bgs/low/pb/client/club_role.proto";
+import public "bgs/low/pb/client/club_range_set.proto";
 import public "bgs/low/pb/client/club_core.proto";
 import public "bgs/low/pb/client/club_member.proto";
 import public "bgs/low/pb/client/club_invitation.proto";

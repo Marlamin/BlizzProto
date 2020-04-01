@@ -50,6 +50,7 @@ message EchoRequest {
 	optional bool network_only = 2 [default = false];
 	optional bytes payload = 3;
 	optional .bgs.protocol.ProcessId forward = 4;
+	optional string forward_client_id = 5;
 }
 
 message EchoResponse {
