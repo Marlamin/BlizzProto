@@ -13,12 +13,9 @@ extend .google.protobuf.ServiceOptions {
 
 message BGSServiceOptions {
 	optional string descriptor_name = 1;
-	optional uint32 version = 4;
-	optional bool use_forwarder = 5;
 }
 
 message SDKServiceOptions {
 	optional bool inbound = 1;
 	optional bool outbound = 2;
-	optional bool use_client_id = 3;
 }

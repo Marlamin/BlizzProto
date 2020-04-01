@@ -11,7 +11,7 @@ message ResolveAccountRequest {
 	option (message_options).custom_select_shard = true;
 
 	optional .bgs.protocol.account.v1.AccountReference ref = 1;
-	optional bool fetch_id = 12;
+	optional bool fetch_id = 12 [default = true];
 }
 
 message ResolveAccountResponse {
@@ -48,14 +48,6 @@ message GetAccountStateRequest {
 message GetAccountStateResponse {
 	optional .bgs.protocol.account.v1.AccountState state = 1;
 	optional .bgs.protocol.account.v1.AccountFieldTags tags = 2;
-}
-
-message GetSignedAccountStateRequest {
-	optional .bgs.protocol.account.v1.AccountId account = 1;
-}
-
-message GetSignedAccountStateResponse {
-	optional string token = 1;
 }
 
 message GetGameAccountStateRequest {
@@ -201,8 +193,9 @@ service AccountService {
 		option (method_options).id = 37;
 	}
 
-	rpc GetSignedAccountState (.bgs.protocol.account.v1.GetSignedAccountStateRequest) returns (.bgs.protocol.account.v1.GetSignedAccountStateResponse) {
-		option (method_options).id = 44;
+	rpc GameAccountFlagUpdate (.bgs.protocol.account.v1.GameAccountFlagUpdateRequest) returns (.bgs.protocol.NO_RESPONSE) {
+		option deprecated = true;
+		option (method_options).id = 39;
 	}
 }
 

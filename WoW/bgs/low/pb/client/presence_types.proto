@@ -34,11 +34,6 @@ message FieldOperation {
 	optional .bgs.protocol.presence.v1.FieldOperation.OperationType operation = 2 [default = SET];
 }
 
-message PresenceState {
-	optional .bgs.protocol.EntityId entity_id = 1;
-	repeated .bgs.protocol.presence.v1.FieldOperation field_operation = 2;
-}
-
 message ChannelState {
 	extend .bgs.protocol.channel.v1.ChannelState {
 		optional .bgs.protocol.presence.v1.ChannelState presence = 101;

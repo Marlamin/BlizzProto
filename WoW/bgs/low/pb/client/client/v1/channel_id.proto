@@ -5,8 +5,6 @@ package bgs.protocol.channel.v1;
 option optimize_for = CODE_SIZE;
 
 message ChannelId {
-	option (message_options).custom_select_shard = true;
-
 	optional uint32 type = 1;
 	optional .bgs.protocol.ProcessId host = 2;
 	optional fixed32 id = 3;

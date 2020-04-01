@@ -13,7 +13,7 @@ message Friend {
 	required .bgs.protocol.EntityId account_id = 1;
 	repeated .bgs.protocol.Attribute attribute = 2;
 	repeated uint32 role = 3 [packed = true];
-	optional uint64 privileges = 4;
+	optional uint64 privileges = 4 [default = 0];
 	optional uint64 attributes_epoch = 5 [deprecated = true];
 	optional uint64 creation_time = 6;
 }
@@ -21,7 +21,7 @@ message Friend {
 message FriendOfFriend {
 	optional .bgs.protocol.EntityId account_id = 1;
 	repeated uint32 role = 3 [packed = true];
-	optional uint64 privileges = 4;
+	optional uint64 privileges = 4 [default = 0];
 	optional string full_name = 6;
 	optional string battle_tag = 7;
 }
@@ -68,7 +68,6 @@ message FriendInvitationParams {
 	repeated uint32 role = 6 [packed = true];
 	repeated .bgs.protocol.Attribute attribute = 8;
 	optional string target_name = 9;
-	optional fixed32 program = 10 [deprecated = true];
 }
 
 message SubscribeResponse {
@@ -83,5 +82,4 @@ message SubscribeResponse {
 
 message AcceptInvitationOptions {
 	optional uint32 role = 1;
-	optional fixed32 program = 2;
 }
