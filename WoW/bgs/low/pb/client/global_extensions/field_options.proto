@@ -19,7 +19,6 @@ enum LogOption {
 message BGSFieldOptions {
 	optional .bgs.protocol.LogOption log = 1 [default = HIDDEN];
 	optional bool shard_key = 2;
-	optional bool fanout_key = 3;
 }
 
 message FieldRestriction {

@@ -50,7 +50,6 @@ message ClubPrivilegeSet {
 	optional bool can_mention_all = 185;
 	optional bool can_mention_here = 186;
 	optional bool can_mention_member = 187;
-	optional bool can_mention_role = 188;
 }
 
 message ClubRole {
