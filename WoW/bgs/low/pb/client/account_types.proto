@@ -14,15 +14,6 @@ enum IdentityVerificationStatus {
 	IDENT_UNKNOWN = 7;
 }
 
-enum RestrictionType {
-	UNKNOWN = 0;
-	GAME_ACCOUNT_BANNED = 1;
-	GAME_ACCOUNT_SUSPENDED = 2;
-	ACCOUNT_LOCKED = 3;
-	ACCOUNT_SQUELCHED = 4;
-	CLUB_MEMBERSHIP_LOCKED = 5;
-}
-
 message AccountId {
 	option (message_options).custom_select_shard = true;
 
@@ -55,7 +46,6 @@ message Identity {
 
 	optional .bgs.protocol.account.v1.AccountId account = 1;
 	optional .bgs.protocol.account.v1.GameAccountHandle game_account = 2;
-	optional .bgs.protocol.ProcessId process = 3;
 }
 
 message ProgramTag {
@@ -126,8 +116,8 @@ message AccountLevelInfo {
 	optional string email = 13;
 	optional bool headless_account = 14;
 	optional bool test_account = 15;
-	repeated .bgs.protocol.account.v1.AccountRestriction restriction = 16;
 	optional bool is_sms_protected = 17;
+	optional uint32 ratings_board_minimum_age = 18;
 }
 
 message PrivacyInfo {
@@ -265,13 +255,4 @@ message IgrId {
 message IgrAddress {
 	optional string client_address = 1;
 	optional uint32 region = 2;
-}
-
-message AccountRestriction {
-	optional uint32 restriction_id = 1;
-	optional fixed32 program = 2;
-	optional .bgs.protocol.account.v1.RestrictionType type = 3 [default = UNKNOWN];
-	repeated fixed32 platform = 4;
-	optional uint64 expire_time = 5;
-	optional uint64 created_time = 6;
 }
