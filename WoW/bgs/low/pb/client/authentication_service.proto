@@ -47,7 +47,6 @@ message LogonResult {
 	optional string geoip_country = 8;
 	optional bytes session_key = 9;
 	optional bool restricted_mode = 10;
-	optional string client_id = 11;
 }
 
 message GenerateSSOTokenRequest {

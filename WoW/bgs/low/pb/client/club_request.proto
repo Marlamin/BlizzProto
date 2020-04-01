@@ -297,11 +297,6 @@ message CreateStreamRequest {
 	optional .bgs.protocol.club.v1.CreateStreamOptions options = 3;
 }
 
-message CreateStreamResponse {
-	optional uint64 club_id = 1;
-	optional uint64 stream_id = 2;
-}
-
 message DestroyStreamRequest {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional uint64 club_id = 2;
@@ -419,17 +414,6 @@ message GetStreamHistoryRequest {
 message GetStreamHistoryResponse {
 	repeated .bgs.protocol.club.v1.StreamMessage message = 1;
 	optional uint64 continuation = 2;
-}
-
-message GetStreamMessageRequest {
-	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
-	optional uint64 club_id = 2;
-	optional uint64 stream_id = 3;
-	optional .bgs.protocol.MessageId message_id = 4;
-}
-
-message GetStreamMessageResponse {
-	optional .bgs.protocol.club.v1.StreamMessage message = 1;
 }
 
 message GetClubActivityRequest {
