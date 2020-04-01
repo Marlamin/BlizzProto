@@ -1,0 +1,9 @@
+package Blizzard.Telemetry.Distribution.Tact;
+
+message DownloadGenericError {
+	optional string product = 1;
+	optional string host = 2;
+	optional string addr = 3;
+	optional string path = 4;
+}
+
