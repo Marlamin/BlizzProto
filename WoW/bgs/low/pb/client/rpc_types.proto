@@ -36,20 +36,6 @@ message ErrorInfo {
 	required uint32 method_id = 4;
 }
 
-message TraceInfo {
-	enum Sampling {
-		YES = 0;
-		NO = 1;
-		DEFER = 2;
-	}
-
-	optional string session_id = 1;
-	optional string trace_id = 2;
-	optional string span_id = 3;
-	optional string parent_span_id = 4;
-	optional .bgs.protocol.TraceInfo.Sampling sampling = 5 [default = DEFER];
-}
-
 message Header {
 	required uint32 service_id = 1;
 	optional uint32 method_id = 2;
@@ -62,5 +48,4 @@ message Header {
 	optional bool is_response = 9;
 	repeated .bgs.protocol.ProcessId forward_targets = 10;
 	optional fixed32 service_hash = 11;
-	optional .bgs.protocol.TraceInfo trace_info = 12;
 }

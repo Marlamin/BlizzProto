@@ -8,10 +8,23 @@ package bgs.protocol.channel.v1;
 option optimize_for = CODE_SIZE;
 option cc_generic_services = false;
 
+message AddMemberRequest {
+	optional .bgs.protocol.EntityId agent_id = 1;
+	required .bgs.protocol.Identity member_identity = 2;
+	required .bgs.protocol.channel.v1.MemberState member_state = 3;
+	required uint64 object_id = 4;
+	optional bool subscribe = 5 [default = true];
+}
+
 message RemoveMemberRequest {
 	optional .bgs.protocol.EntityId agent_id = 1;
 	required .bgs.protocol.EntityId member_id = 2;
 	optional uint32 reason = 3;
+}
+
+message UnsubscribeMemberRequest {
+	optional .bgs.protocol.EntityId agent_id = 1;
+	required .bgs.protocol.EntityId member_id = 2;
 }
 
 message SendMessageRequest {
@@ -36,6 +49,12 @@ message DissolveRequest {
 	optional uint32 reason = 2;
 }
 
+message SetRolesRequest {
+	optional .bgs.protocol.EntityId agent_id = 1;
+	repeated uint32 role = 2 [packed = true];
+	repeated .bgs.protocol.EntityId member_id = 3;
+}
+
 message JoinNotification {
 	optional .bgs.protocol.channel.v1.Member self = 1;
 	repeated .bgs.protocol.channel.v1.Member member = 2;
@@ -52,7 +71,7 @@ message MemberAddedNotification {
 
 message LeaveNotification {
 	optional .bgs.protocol.EntityId agent_id = 1;
-	required .bgs.protocol.EntityId member_id = 2 [deprecated = true];
+	required .bgs.protocol.EntityId member_id = 2;
 	optional uint32 reason = 3;
 	optional .bgs.protocol.channel.v1.ChannelId channel_id = 4;
 	optional .bgs.protocol.account.v1.Identity subscriber = 5;
@@ -70,7 +89,7 @@ message SendMessageNotification {
 	optional .bgs.protocol.EntityId agent_id = 1;
 	required .bgs.protocol.channel.v1.Message message = 2;
 	optional uint64 required_privileges = 3 [default = 0];
-	optional string battle_tag = 4;
+	optional string identity = 4;
 	optional .bgs.protocol.channel.v1.ChannelId channel_id = 5;
 	optional .bgs.protocol.account.v1.Identity subscriber = 6;
 }
@@ -85,12 +104,17 @@ message UpdateChannelStateNotification {
 message UpdateMemberStateNotification {
 	optional .bgs.protocol.EntityId agent_id = 1;
 	repeated .bgs.protocol.channel.v1.Member state_change = 2;
+	repeated uint32 removed_role = 3 [packed = true];
 	optional .bgs.protocol.channel.v1.ChannelId channel_id = 4;
 	optional .bgs.protocol.account.v1.Identity subscriber = 5;
 }
 
 service ChannelService {
 	option (original_fully_qualified_descriptor_name) = "bnet.protocol.channel.Channel";
+
+	rpc AddMember (.bgs.protocol.channel.v1.AddMemberRequest) returns (.bgs.protocol.NoData) {
+		option (method_id) = 1;
+	}
 
 	rpc RemoveMember (.bgs.protocol.channel.v1.RemoveMemberRequest) returns (.bgs.protocol.NoData) {
 		option (method_id) = 2;
@@ -110,6 +134,14 @@ service ChannelService {
 
 	rpc Dissolve (.bgs.protocol.channel.v1.DissolveRequest) returns (.bgs.protocol.NoData) {
 		option (method_id) = 6;
+	}
+
+	rpc SetRoles (.bgs.protocol.channel.v1.SetRolesRequest) returns (.bgs.protocol.NoData) {
+		option (method_id) = 7;
+	}
+
+	rpc UnsubscribeMember (.bgs.protocol.channel.v1.UnsubscribeMemberRequest) returns (.bgs.protocol.NoData) {
+		option (method_id) = 8;
 	}
 }
 
