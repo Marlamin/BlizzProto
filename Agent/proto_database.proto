@@ -42,7 +42,7 @@ message UserSettings {
 	optional string selected_text_language = 6;
 	optional string selected_speech_language = 7;
 	repeated .proto_database.LanguageSetting languages = 8;
-	optional string gfx_override_tags = 9;
+	optional string additional_tags = 9;
 	optional string version_branch = 10;
 	optional string account_country = 11;
 	optional string geo_ip_country = 12;
@@ -72,6 +72,12 @@ message BaseProductState {
 	repeated .proto_database.BuildConfig backgroundDownloadBuildConfig = 9;
 	optional string decryptionKey = 10;
 	repeated string completedInstallActions = 11;
+	repeated string completedBuildKeys = 12;
+	repeated string completedBgdlKeys = 13;
+	optional string activeBuildKey = 14;
+	optional string activeBgdlKey = 15;
+	optional string activeInstallKey = 16;
+	optional string activeTagString = 17;
 }
 
 message BackfillProgress {
