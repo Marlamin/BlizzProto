@@ -1,12 +1,10 @@
-import public "bgs/low/pb/client/client/v1/channel_id.proto";
+import public "bgs/low/pb/client/api/client/v1/channel_id.proto";
 import "bgs/low/pb/client/attribute_types.proto";
 import "bgs/low/pb/client/entity_types.proto";
 import "bgs/low/pb/client/invitation_types.proto";
 import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.channel.v1;
-
-option optimize_for = CODE_SIZE;
 
 message Message {
 	repeated .bgs.protocol.Attribute attribute = 1;
@@ -52,7 +50,7 @@ message ChannelState {
 	optional .bgs.protocol.channel.v1.ChannelState.PrivacyLevel privacy_level = 7 [default = PRIVACY_LEVEL_OPEN];
 	optional string name = 8;
 	optional string channel_type = 10 [default = "default"];
-	optional fixed32 program = 11 [default = 0];
+	optional fixed32 program = 11;
 	optional bool subscribe_to_presence = 13 [default = true];
 
 	extensions 100 to 10000;

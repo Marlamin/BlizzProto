@@ -1,7 +1,5 @@
 package bgs.protocol.config;
 
-option optimize_for = CODE_SIZE;
-
 message RPCMethodConfig {
 	optional string service_name = 1 [deprecated = true];
 	optional string method_name = 2 [deprecated = true];

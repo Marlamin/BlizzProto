@@ -4,8 +4,6 @@ import "bgs/low/pb/client/channel_types.proto";
 
 package bgs.protocol.presence.v1;
 
-option optimize_for = CODE_SIZE;
-
 message RichPresenceLocalizationKey {
 	required fixed32 program = 1;
 	required fixed32 stream = 2;
@@ -32,6 +30,11 @@ message FieldOperation {
 
 	required .bgs.protocol.presence.v1.Field field = 1;
 	optional .bgs.protocol.presence.v1.FieldOperation.OperationType operation = 2 [default = SET];
+}
+
+message PresenceState {
+	optional .bgs.protocol.EntityId entity_id = 1;
+	repeated .bgs.protocol.presence.v1.FieldOperation field_operation = 2;
 }
 
 message ChannelState {
