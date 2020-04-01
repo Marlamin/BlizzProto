@@ -1,16 +1,10 @@
+import public "bgs/low/pb/client/club_member_id.proto";
 import "bgs/low/pb/client/global_extensions/message_options.proto";
 import "bgs/low/pb/client/api/client/v2/attribute_types.proto";
-import "bgs/low/pb/client/account_types.proto";
 import "bgs/low/pb/client/club_enum.proto";
+import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.club.v1;
-
-message MemberId {
-	option (message_options).custom_select_shard = true;
-
-	optional .bgs.protocol.account.v1.AccountId account_id = 1;
-	optional uint64 unique_id = 2;
-}
 
 message Member {
 	optional .bgs.protocol.club.v1.MemberId id = 1;
@@ -64,6 +58,11 @@ message CreateMemberOptions {
 message MemberDescription {
 	optional .bgs.protocol.club.v1.MemberId id = 1;
 	optional string battle_tag = 2;
+}
+
+message RoleOptions {
+	optional .bgs.protocol.club.v1.MemberId member_id = 1;
+	repeated uint32 role = 2 [packed = true, (valid).repeated.size.min = 1, (valid).repeated.size.max = 1];
 }
 
 message RoleAssignment {
