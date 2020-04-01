@@ -2,8 +2,22 @@ import "bgs/low/pb/client/club_core.proto";
 import "bgs/low/pb/client/club_member.proto";
 import "bgs/low/pb/client/club_invitation.proto";
 import "bgs/low/pb/client/event_view_types.proto";
+import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.club.v1;
+
+message ClubMembershipFilter {
+	optional .bgs.protocol.club.v1.MemberId member_id = 1;
+	optional .bgs.protocol.club.v1.UniqueClubType type = 2;
+}
+
+message ClubMembershipSubscribeOptions {
+	repeated .bgs.protocol.club.v1.ClubMembershipFilter filter = 1 [(valid).repeated.size.min = 0, (valid).repeated.size.max = 25];
+}
+
+message ClubMembershipGetStateOptions {
+	repeated .bgs.protocol.club.v1.ClubMembershipFilter filter = 1 [(valid).repeated.size.min = 0, (valid).repeated.size.max = 25];
+}
 
 message ClubMembershipDescription {
 	optional .bgs.protocol.club.v1.MemberId member_id = 1;
