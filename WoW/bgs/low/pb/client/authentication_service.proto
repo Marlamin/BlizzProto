@@ -47,7 +47,6 @@ message LogonResult {
 	optional string geoip_country = 8;
 	optional bytes session_key = 9;
 	optional bool restricted_mode = 10;
-	optional string client_id = 11;
 }
 
 message GenerateSSOTokenRequest {
@@ -174,7 +173,6 @@ service AuthenticationListener {
 
 service AuthenticationService {
 	option (service_options).descriptor_name = "bnet.protocol.authentication.AuthenticationServer";
-	option (service_options).shard_name = "authentication";
 	option (sdk_service_options).outbound = true;
 
 	rpc Logon (.bgs.protocol.authentication.v1.LogonRequest) returns (.bgs.protocol.NoData) {
