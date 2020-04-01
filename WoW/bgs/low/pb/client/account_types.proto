@@ -49,6 +49,7 @@ message AccountBlob {
 	optional string country = 32;
 	optional uint32 preferred_region = 33;
 	optional .bgs.protocol.account.v1.IdentityVerificationStatus identity_check_status = 34 [default = IDENT_NO_DATA];
+	optional string cais_id = 35;
 }
 
 message AccountBlobList {
@@ -101,6 +102,15 @@ message Identity {
 	optional .bgs.protocol.account.v1.AccountId account = 1;
 	optional .bgs.protocol.account.v1.GameAccountHandle game_account = 2;
 	optional .bgs.protocol.ProcessId process = 3;
+}
+
+message AccountInfo {
+	optional bool account_paid = 1 [default = false];
+	optional fixed32 country_id = 2 [default = 0];
+	optional string battle_tag = 3;
+	optional bool manual_review = 4 [default = false];
+	optional .bgs.protocol.account.v1.Identity identity = 5;
+	optional bool account_muted = 6 [default = false];
 }
 
 message ProgramTag {
@@ -238,6 +248,7 @@ message GameSessionInfo {
 	optional bool is_using_igr = 6;
 	optional bool parental_controls_active = 7;
 	optional uint64 start_time_sec = 8;
+	optional .bgs.protocol.account.v1.IgrId igr_id = 9;
 }
 
 message GameSessionUpdateInfo {
@@ -290,4 +301,45 @@ message GameAccountStateTagged {
 message AuthorizedData {
 	optional string data = 1;
 	repeated uint32 license = 2;
+}
+
+message BenefactorAddress {
+	optional uint32 region = 1;
+	optional string igr_address = 2;
+}
+
+message ExternalBenefactorLookup {
+	optional fixed32 benefactor_id = 1;
+	optional uint32 region = 2;
+}
+
+message AuthBenefactor {
+	optional string igr_address = 1;
+	optional fixed32 benefactor_id = 2;
+	optional bool active = 3;
+	optional uint64 last_update_time = 4;
+}
+
+message ApplicationInfo {
+	optional fixed32 platform_id = 1;
+	optional fixed32 locale = 2;
+	optional int32 application_version = 3;
+}
+
+message DeductRecord {
+	optional .bgs.protocol.account.v1.GameAccountHandle game_account = 1;
+	optional .bgs.protocol.account.v1.GameAccountHandle benefactor = 2;
+	optional uint64 start_time = 3;
+	optional uint64 end_time = 4;
+	optional string client_address = 5;
+	optional .bgs.protocol.account.v1.ApplicationInfo application_info = 6;
+	optional string session_owner = 7;
+	optional bool free_session = 8;
+}
+
+message IgrId {
+	oneof type {
+		.bgs.protocol.account.v1.GameAccountHandle game_account = 1;
+		fixed32 external_id = 2;
+	}
 }

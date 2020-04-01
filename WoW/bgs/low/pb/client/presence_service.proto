@@ -47,6 +47,15 @@ message OwnershipRequest {
 	optional bool release_ownership = 2 [default = false];
 }
 
+message MigrateOlympusCustomMessageRequest {
+	required .bgs.protocol.EntityId account = 1;
+}
+
+message MigrateOlympusCustomMessageResponse {
+	optional string custom_message = 1;
+	optional uint32 custom_message_time_epoch = 2;
+}
+
 service PresenceService {
 	option (original_fully_qualified_descriptor_name) = "bnet.protocol.presence.PresenceService";
 
@@ -72,5 +81,9 @@ service PresenceService {
 
 	rpc SubscribeNotification (.bgs.protocol.presence.v1.SubscribeNotificationRequest) returns (.bgs.protocol.NoData) {
 		option (method_id) = 7;
+	}
+
+	rpc MigrateOlympusCustomMessage (.bgs.protocol.presence.v1.MigrateOlympusCustomMessageRequest) returns (.bgs.protocol.presence.v1.MigrateOlympusCustomMessageResponse) {
+		option (method_id) = 8;
 	}
 }
