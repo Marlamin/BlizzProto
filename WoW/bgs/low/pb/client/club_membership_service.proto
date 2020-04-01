@@ -7,7 +7,6 @@ option cc_generic_services = false;
 
 message SubscribeRequest {
 	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
-	optional .bgs.protocol.club.v1.ClubMembershipSubscribeOptions options = 2;
 }
 
 message SubscribeResponse {
@@ -20,7 +19,6 @@ message UnsubscribeRequest {
 
 message GetStateRequest {
 	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
-	optional .bgs.protocol.club.v1.ClubMembershipGetStateOptions options = 2;
 }
 
 message GetStateResponse {
@@ -35,7 +33,6 @@ message UpdateClubSharedSettingsRequest {
 message GetStreamMentionsRequest {
 	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
 	optional .bgs.protocol.GetEventOptions options = 2;
-	optional bool fetch_messages = 3;
 }
 
 message GetStreamMentionsResponse {
