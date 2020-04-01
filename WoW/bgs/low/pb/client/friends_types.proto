@@ -31,9 +31,7 @@ message ReceivedInvitation {
 	required .bgs.protocol.Identity invitee_identity = 3;
 	optional string inviter_name = 4;
 	optional string invitee_name = 5;
-	optional string invitation_message = 6;
 	optional uint64 creation_time = 7;
-	optional uint64 expiration_time = 8;
 	optional fixed32 program = 9;
 
 	extensions 100 to 10000;
@@ -71,9 +69,9 @@ message FriendInvitationParams {
 }
 
 message SubscribeResponse {
-	optional uint32 max_friends = 1;
-	optional uint32 max_received_invitations = 2;
-	optional uint32 max_sent_invitations = 3;
+	optional uint32 max_friends = 1 [deprecated = true];
+	optional uint32 max_received_invitations = 2 [deprecated = true];
+	optional uint32 max_sent_invitations = 3 [deprecated = true];
 	repeated .bgs.protocol.Role role = 4;
 	repeated .bgs.protocol.friends.v1.Friend friends = 5;
 	repeated .bgs.protocol.friends.v1.ReceivedInvitation received_invitations = 7;
