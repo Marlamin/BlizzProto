@@ -75,7 +75,6 @@ message StreamMention {
 	optional bool destroyed = 5;
 	optional .bgs.protocol.TimeSeriesId mention_id = 6;
 	optional .bgs.protocol.club.v1.MemberId member_id = 7;
-	optional .bgs.protocol.club.v1.StreamMessage message = 8;
 }
 
 message StreamView {
