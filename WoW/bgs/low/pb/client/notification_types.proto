@@ -5,8 +5,6 @@ import "bgs/low/pb/client/rpc_types.proto";
 
 package bgs.protocol.notification.v1;
 
-option optimize_for = CODE_SIZE;
-
 message Target {
 	optional .bgs.protocol.account.v1.Identity identity = 1;
 	optional string type = 2;
