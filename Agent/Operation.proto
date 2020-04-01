@@ -23,7 +23,6 @@ message OperationCommon {
 	optional .Blizzard.Telemetry.Distribution.Agent.DiskSpaceDetails out_of_space_details = 8;
 	optional uint32 install_path_length = 9;
 	optional bool is_shared_install = 10;
-	optional string tags = 11;
 }
 
 message OperationPhase {
