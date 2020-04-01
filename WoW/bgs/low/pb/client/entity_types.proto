@@ -14,6 +14,6 @@ message EntityId {
 }
 
 message Identity {
-	optional .bgs.protocol.EntityId account_id = 1 [(valid).entity_id.kind = ACCOUNT];
-	optional .bgs.protocol.EntityId game_account_id = 2 [(valid).entity_id.kind = GAME_ACCOUNT];
+	optional .bgs.protocol.EntityId account_id = 1 [(valid).entity_id.needed = true, (valid).entity_id.kind = ACCOUNT];
+	optional .bgs.protocol.EntityId game_account_id = 2 [(valid).entity_id.needed = true, (valid).entity_id.kind = GAME_ACCOUNT];
 }
