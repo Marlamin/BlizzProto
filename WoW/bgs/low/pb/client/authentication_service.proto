@@ -31,8 +31,6 @@ message LogonRequest {
 	optional string version = 5;
 	optional int32 application_version = 6;
 	optional bool public_computer = 7;
-	optional bytes sso_id = 8;
-	optional bool disconnect_on_cookie_fail = 9 [default = false];
 	optional bool allow_logon_queue_notifications = 10 [default = false];
 	optional bool web_client_verification = 11 [default = false];
 	optional bytes cached_web_credentials = 12;
@@ -128,88 +126,90 @@ message VerifyWebCredentialsRequest {
 }
 
 service AuthenticationListener {
-	option (original_fully_qualified_descriptor_name) = "bnet.protocol.authentication.AuthenticationClient";
+	option (service_options).descriptor_name = "bnet.protocol.authentication.AuthenticationClient";
+	option (sdk_service_options).inbound = true;
 
 	rpc OnModuleLoad (.bgs.protocol.authentication.v1.ModuleLoadRequest) returns (.bgs.protocol.NO_RESPONSE) {
 		option deprecated = true;
-		option (method_id) = 1;
+		option (method_options).id = 1;
 	}
 
 	rpc OnModuleMessage (.bgs.protocol.authentication.v1.ModuleMessageRequest) returns (.bgs.protocol.NoData) {
 		option deprecated = true;
-		option (method_id) = 2;
+		option (method_options).id = 2;
 	}
 
 	rpc OnServerStateChange (.bgs.protocol.authentication.v1.ServerStateChangeRequest) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 4;
+		option (method_options).id = 4;
 	}
 
 	rpc OnLogonComplete (.bgs.protocol.authentication.v1.LogonResult) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 5;
+		option (method_options).id = 5;
 	}
 
 	rpc OnMemModuleLoad (.bgs.protocol.authentication.v1.MemModuleLoadRequest) returns (.bgs.protocol.authentication.v1.MemModuleLoadResponse) {
-		option (method_id) = 6;
+		option (method_options).id = 6;
 	}
 
 	rpc OnLogonUpdate (.bgs.protocol.authentication.v1.LogonUpdateRequest) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 10;
+		option (method_options).id = 10;
 	}
 
 	rpc OnVersionInfoUpdated (.bgs.protocol.authentication.v1.VersionInfoNotification) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 11;
+		option (method_options).id = 11;
 	}
 
 	rpc OnLogonQueueUpdate (.bgs.protocol.authentication.v1.LogonQueueUpdateRequest) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 12;
+		option (method_options).id = 12;
 	}
 
 	rpc OnLogonQueueEnd (.bgs.protocol.NoData) returns (.bgs.protocol.NO_RESPONSE) {
-		option (method_id) = 13;
+		option (method_options).id = 13;
 	}
 
 	rpc OnGameAccountSelected (.bgs.protocol.authentication.v1.GameAccountSelectedRequest) returns (.bgs.protocol.NO_RESPONSE) {
 		option deprecated = true;
-		option (method_id) = 14;
+		option (method_options).id = 14;
 	}
 }
 
 service AuthenticationService {
-	option (original_fully_qualified_descriptor_name) = "bnet.protocol.authentication.AuthenticationServer";
+	option (service_options).descriptor_name = "bnet.protocol.authentication.AuthenticationServer";
+	option (sdk_service_options).outbound = true;
 
 	rpc Logon (.bgs.protocol.authentication.v1.LogonRequest) returns (.bgs.protocol.NoData) {
-		option (method_id) = 1;
+		option (method_options).id = 1;
 	}
 
 	rpc ModuleNotify (.bgs.protocol.authentication.v1.ModuleNotification) returns (.bgs.protocol.NoData) {
 		option deprecated = true;
-		option (method_id) = 2;
+		option (method_options).id = 2;
 	}
 
 	rpc ModuleMessage (.bgs.protocol.authentication.v1.ModuleMessageRequest) returns (.bgs.protocol.NoData) {
 		option deprecated = true;
-		option (method_id) = 3;
+		option (method_options).id = 3;
 	}
 
 	rpc SelectGameAccount_DEPRECATED (.bgs.protocol.EntityId) returns (.bgs.protocol.NoData) {
 		option deprecated = true;
-		option (method_id) = 4;
+		option (method_options).id = 4;
 	}
 
 	rpc GenerateSSOToken (.bgs.protocol.authentication.v1.GenerateSSOTokenRequest) returns (.bgs.protocol.authentication.v1.GenerateSSOTokenResponse) {
-		option (method_id) = 5;
+		option (method_options).id = 5;
 	}
 
 	rpc SelectGameAccount (.bgs.protocol.authentication.v1.SelectGameAccountRequest) returns (.bgs.protocol.NoData) {
 		option deprecated = true;
-		option (method_id) = 6;
+		option (method_options).id = 6;
 	}
 
 	rpc VerifyWebCredentials (.bgs.protocol.authentication.v1.VerifyWebCredentialsRequest) returns (.bgs.protocol.NoData) {
-		option (method_id) = 7;
+		option (method_options).id = 7;
 	}
 
 	rpc GenerateWebCredentials (.bgs.protocol.authentication.v1.GenerateWebCredentialsRequest) returns (.bgs.protocol.authentication.v1.GenerateWebCredentialsResponse) {
-		option (method_id) = 8;
+		option (method_options).id = 8;
 	}
 }

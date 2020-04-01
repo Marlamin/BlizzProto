@@ -23,71 +23,10 @@ message AccountLicense {
 	optional uint64 expires = 2;
 }
 
-message AccountCredential {
-	required uint32 id = 1;
-	optional bytes data = 2;
-}
-
-message AccountBlob {
-	required fixed32 id = 2;
-	required uint32 region = 3;
-	repeated string email = 4;
-	required uint64 flags = 5;
-	optional uint64 secure_release = 6;
-	optional uint64 whitelist_start = 7;
-	optional uint64 whitelist_end = 8;
-	required string full_name = 10;
-	repeated .bgs.protocol.account.v1.AccountLicense licenses = 20;
-	repeated .bgs.protocol.account.v1.AccountCredential credentials = 21;
-	repeated .bgs.protocol.account.v1.GameAccountLink account_links = 22;
-	optional string battle_tag = 23;
-	optional fixed32 default_currency = 25;
-	optional uint32 legal_region = 26;
-	optional fixed32 legal_locale = 27;
-	required uint64 cache_expiration = 30;
-	optional .bgs.protocol.account.v1.ParentalControlInfo parental_control_info = 31;
-	optional string country = 32;
-	optional uint32 preferred_region = 33;
-	optional .bgs.protocol.account.v1.IdentityVerificationStatus identity_check_status = 34 [default = IDENT_NO_DATA];
-	optional string cais_id = 35;
-}
-
-message AccountBlobList {
-	repeated .bgs.protocol.account.v1.AccountBlob blob = 1;
-}
-
 message GameAccountHandle {
 	required fixed32 id = 1;
 	required fixed32 program = 2;
 	required uint32 region = 3;
-}
-
-message GameAccountLink {
-	required .bgs.protocol.account.v1.GameAccountHandle game_account = 1;
-	required string name = 2;
-}
-
-message GameAccountBlob {
-	required .bgs.protocol.account.v1.GameAccountHandle game_account = 1;
-	optional string name = 2;
-	optional uint32 realm_permissions = 3 [default = 0];
-	required uint32 status = 4;
-	optional uint64 flags = 5 [default = 0];
-	optional uint32 billing_flags = 6 [default = 0];
-	required uint64 cache_expiration = 7;
-	optional uint64 subscription_expiration = 10;
-	optional uint32 units_remaining = 11;
-	optional uint64 status_expiration = 12;
-	optional uint32 box_level = 13;
-	optional uint64 box_level_expiration = 14;
-	repeated .bgs.protocol.account.v1.AccountLicense licenses = 20;
-	optional fixed32 raf_account = 21;
-	optional bytes raf_info = 22;
-	optional uint64 raf_expiration = 23;
-}
-
-message GameAccountBlobList {
-	repeated .bgs.protocol.account.v1.GameAccountBlob blob = 1;
 }
 
 message AccountReference {
@@ -102,15 +41,6 @@ message Identity {
 	optional .bgs.protocol.account.v1.AccountId account = 1;
 	optional .bgs.protocol.account.v1.GameAccountHandle game_account = 2;
 	optional .bgs.protocol.ProcessId process = 3;
-}
-
-message AccountInfo {
-	optional bool account_paid = 1 [default = false];
-	optional fixed32 country_id = 2 [default = 0];
-	optional string battle_tag = 3;
-	optional bool manual_review = 4 [default = false];
-	optional .bgs.protocol.account.v1.Identity identity = 5;
-	optional bool account_muted = 6 [default = false];
 }
 
 message ProgramTag {
@@ -179,6 +109,7 @@ message AccountLevelInfo {
 	optional bool account_paid_any = 11;
 	optional .bgs.protocol.account.v1.IdentityVerificationStatus identity_check_status = 12 [default = IDENT_NO_DATA];
 	optional string email = 13;
+	optional bool headless_account = 14;
 }
 
 message PrivacyInfo {
@@ -189,7 +120,7 @@ message PrivacyInfo {
 	}
 
 	optional bool is_using_rid = 3;
-	optional bool is_real_id_visible_for_view_friends = 4;
+	optional bool is_visible_for_view_friends = 4;
 	optional bool is_hidden_from_friend_finder = 5;
 	optional .bgs.protocol.account.v1.PrivacyInfo.GameInfoPrivacy game_info_privacy = 6 [default = PRIVACY_FRIENDS];
 }
@@ -225,7 +156,7 @@ message GameTimeRemainingInfo {
 	optional uint32 minutes_remaining = 1;
 	optional uint32 parental_daily_minutes_remaining = 2;
 	optional uint32 parental_weekly_minutes_remaining = 3;
-	optional uint32 seconds_remaining_until_kick = 4;
+	optional uint32 seconds_remaining_until_kick = 4 [deprecated = true];
 }
 
 message GameStatus {
@@ -264,7 +195,7 @@ message GameSessionLocation {
 message CAIS {
 	optional uint32 played_minutes = 1;
 	optional uint32 rested_minutes = 2;
-	optional uint64 last_heard_time = 3;
+	optional uint64 last_heard_time = 3 [deprecated = true];
 }
 
 message GameAccountList {
@@ -303,43 +234,14 @@ message AuthorizedData {
 	repeated uint32 license = 2;
 }
 
-message BenefactorAddress {
-	optional uint32 region = 1;
-	optional string igr_address = 2;
-}
-
-message ExternalBenefactorLookup {
-	optional fixed32 benefactor_id = 1;
-	optional uint32 region = 2;
-}
-
-message AuthBenefactor {
-	optional string igr_address = 1;
-	optional fixed32 benefactor_id = 2;
-	optional bool active = 3;
-	optional uint64 last_update_time = 4;
-}
-
-message ApplicationInfo {
-	optional fixed32 platform_id = 1;
-	optional fixed32 locale = 2;
-	optional int32 application_version = 3;
-}
-
-message DeductRecord {
-	optional .bgs.protocol.account.v1.GameAccountHandle game_account = 1;
-	optional .bgs.protocol.account.v1.GameAccountHandle benefactor = 2;
-	optional uint64 start_time = 3;
-	optional uint64 end_time = 4;
-	optional string client_address = 5;
-	optional .bgs.protocol.account.v1.ApplicationInfo application_info = 6;
-	optional string session_owner = 7;
-	optional bool free_session = 8;
-}
-
 message IgrId {
 	oneof type {
 		.bgs.protocol.account.v1.GameAccountHandle game_account = 1;
 		fixed32 external_id = 2;
 	}
+}
+
+message IgrAddress {
+	optional string client_address = 1;
+	optional uint32 region = 2;
 }
