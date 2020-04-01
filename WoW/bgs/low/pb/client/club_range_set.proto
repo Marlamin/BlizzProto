@@ -19,7 +19,7 @@ message ClubMemberRangeSet {
 	optional .bgs.protocol.UnsignedIntRange count = 1;
 	optional .bgs.protocol.UnsignedIntRange voice = 3;
 	optional .bgs.protocol.UnsignedIntRange stream_subscriptions = 5;
-	optional .bgs.protocol.UnsignedIntRange note = 7;
+	optional .bgs.protocol.UnsignedIntRange note_range = 7;
 }
 
 message ClubStreamRangeSet {
