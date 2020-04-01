@@ -1,6 +1,5 @@
 import "bgs/low/pb/client/club_types.proto";
 import "bgs/low/pb/client/club_stream.proto";
-import "bgs/low/pb/client/message_types.proto";
 
 package bgs.protocol.club.v1.membership;
 
@@ -44,7 +43,7 @@ message GetStreamMentionsResponse {
 
 message RemoveStreamMentionsRequest {
 	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
-	repeated .bgs.protocol.MessageId message_id = 2;
+	repeated .bgs.protocol.TimeSeriesId mention_id = 2;
 }
 
 message AdvanceStreamMentionViewTimeRequest {

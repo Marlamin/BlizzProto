@@ -15,6 +15,13 @@ enum InvitationRemovedReason {
 	INVITATION_REMOVED_REASON_CANCELED = 5;
 }
 
+enum SuggestionRemovedReason {
+	SUGGESTION_REMOVED_REASON_APPROVED = 0;
+	SUGGESTION_REMOVED_REASON_DECLINED = 1;
+	SUGGESTION_REMOVED_REASON_EXPIRED = 2;
+	SUGGESTION_REMOVED_REASON_CANCELED = 3;
+}
+
 message Invitation {
 	required fixed64 id = 1;
 	required .bgs.protocol.Identity inviter_identity = 2;

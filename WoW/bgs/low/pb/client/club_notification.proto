@@ -46,7 +46,7 @@ message MemberRemovedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
-	repeated .bgs.protocol.club.v1.MemberRemoved member = 4;
+	repeated .bgs.protocol.club.v1.MemberRemovedAssignment member = 4;
 }
 
 message MemberStateChangedNotification {
@@ -68,6 +68,21 @@ message MemberRoleChangedNotification {
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	repeated .bgs.protocol.club.v1.RoleAssignment assignment = 4;
+}
+
+message SuggestionAddedNotification {
+	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
+	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
+	optional uint64 club_id = 3;
+	required .bgs.protocol.club.v1.ClubSuggestion suggestion = 4;
+}
+
+message SuggestionRemovedNotification {
+	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
+	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
+	optional uint64 club_id = 3;
+	optional fixed64 suggestion_id = 4;
+	optional .bgs.protocol.SuggestionRemovedReason reason = 5 [default = SUGGESTION_REMOVED_REASON_APPROVED];
 }
 
 message StreamAddedNotification {

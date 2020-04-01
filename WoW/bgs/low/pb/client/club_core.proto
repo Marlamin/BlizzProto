@@ -102,12 +102,17 @@ message StreamSettings {
 
 message ClubSettings {
 	repeated .bgs.protocol.club.v1.StreamSettings stream = 1;
+	optional bool stream_notification_filter_all = 2;
+	repeated .bgs.protocol.v2.Attribute attribute = 3;
 }
 
 message ClubSettingsOptions {
-	repeated .bgs.protocol.club.v1.StreamSettings stream = 1;
+	repeated .bgs.protocol.club.v1.StreamSettings stream = 1 [deprecated = true];
+	optional .bgs.protocol.club.v1.ClubSettings settings = 2;
+	optional uint32 version = 3;
 }
 
 message ClubSettingsAssignment {
-	repeated .bgs.protocol.club.v1.StreamSettings stream = 1;
+	repeated .bgs.protocol.club.v1.StreamSettings stream = 1 [deprecated = true];
+	optional .bgs.protocol.club.v1.ClubSettings settings = 2;
 }

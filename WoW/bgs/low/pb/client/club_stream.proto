@@ -4,6 +4,7 @@ import "bgs/low/pb/client/api/client/v2/attribute_types.proto";
 import "bgs/low/pb/client/embed_types.proto";
 import "bgs/low/pb/client/event_view_types.proto";
 import "bgs/low/pb/client/message_types.proto";
+import "bgs/low/pb/client/ets_types.proto";
 
 package bgs.protocol.club.v1;
 
@@ -71,9 +72,11 @@ message StreamMessage {
 message StreamMention {
 	optional uint64 club_id = 1;
 	optional uint64 stream_id = 2;
-	optional .bgs.protocol.MessageId id = 3;
+	optional .bgs.protocol.MessageId message_id = 3;
 	optional .bgs.protocol.club.v1.MemberDescription author = 4;
 	optional bool destroyed = 5;
+	optional .bgs.protocol.TimeSeriesId mention_id = 6;
+	optional .bgs.protocol.club.v1.MemberId member_id = 7;
 }
 
 message StreamView {

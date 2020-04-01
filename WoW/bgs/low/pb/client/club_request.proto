@@ -34,6 +34,7 @@ message GetDescriptionResponse {
 }
 
 message GetClubTypeRequest {
+	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.UniqueClubType type = 2;
 }
 

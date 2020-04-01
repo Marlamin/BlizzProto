@@ -1,5 +1,4 @@
 import "bgs/low/pb/client/club_types.proto";
-import "bgs/low/pb/client/message_types.proto";
 
 package bgs.protocol.club.v1.membership;
 
@@ -48,7 +47,7 @@ message StreamMentionAddedNotification {
 message StreamMentionRemovedNotification {
 	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
 	optional .bgs.protocol.account.v1.AccountId subscriber_id = 2;
-	optional .bgs.protocol.MessageId message_id = 3;
+	optional .bgs.protocol.TimeSeriesId mention_id = 3;
 }
 
 message StreamMentionAdvanceViewTimeNotification {

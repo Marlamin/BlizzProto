@@ -18,6 +18,8 @@ message ClubPrivilegeSet {
 	optional bool can_set_own_voice_state = 33;
 	optional bool can_set_own_presence_level = 34;
 	optional bool can_set_own_whisper_level = 35;
+	optional bool can_set_own_member_note = 36;
+	optional bool can_set_other_member_note = 37;
 	optional bool can_use_voice = 50;
 	optional bool can_voice_mute_member_for_all = 51;
 	optional bool can_get_invitation = 70;

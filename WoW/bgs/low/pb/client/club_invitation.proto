@@ -26,6 +26,7 @@ message ClubInvitation {
 	repeated .bgs.protocol.v2.Attribute attribute = 6;
 	optional uint64 creation_time = 7;
 	optional uint64 expiration_time = 8;
+	optional .bgs.protocol.club.v1.MemberDescription suggester = 9;
 }
 
 message SendSuggestionOptions {
@@ -42,6 +43,7 @@ message ClubSuggestion {
 	optional .bgs.protocol.club.v1.ClubSlot slot = 5;
 	repeated .bgs.protocol.v2.Attribute attribute = 6;
 	optional uint64 creation_time = 7;
+	optional uint64 expiration_time = 8;
 }
 
 message CreateTicketOptions {

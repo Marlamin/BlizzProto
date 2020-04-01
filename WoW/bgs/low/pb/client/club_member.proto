@@ -23,11 +23,22 @@ message Member {
 	optional .bgs.protocol.club.v1.PresenceLevel presence_level = 6 [default = PRESENCE_LEVEL_NONE];
 	optional bool moderator_mute = 7;
 	optional .bgs.protocol.club.v1.WhisperLevel whisper_level = 8 [default = WHISPER_LEVEL_OPEN];
+	optional string note = 9;
 	optional bool active = 50;
 	optional .bgs.protocol.club.v1.MemberVoiceState voice = 51;
 }
 
-message MemberRemoved {
+message MemberResult {
+	optional .bgs.protocol.club.v1.MemberId member_id = 1;
+	optional uint32 status = 2;
+}
+
+message RemoveMemberOptions {
+	optional .bgs.protocol.club.v1.MemberId id = 1;
+	optional .bgs.protocol.club.v1.ClubRemovedReason reason = 2 [default = CLUB_REMOVED_REASON_NONE];
+}
+
+message MemberRemovedAssignment {
 	optional .bgs.protocol.club.v1.MemberId id = 1;
 	optional .bgs.protocol.club.v1.ClubRemovedReason reason = 2 [default = CLUB_REMOVED_REASON_NONE];
 }
@@ -82,6 +93,7 @@ message MemberStateOptions {
 	optional .bgs.protocol.club.v1.PresenceLevel presence_level = 2 [default = PRESENCE_LEVEL_NONE];
 	optional bool moderator_mute = 3;
 	optional .bgs.protocol.club.v1.WhisperLevel whisper_level = 4 [default = WHISPER_LEVEL_OPEN];
+	optional string note = 5;
 }
 
 message MemberStateAssignment {
@@ -90,4 +102,5 @@ message MemberStateAssignment {
 	optional .bgs.protocol.club.v1.PresenceLevel presence_level = 3 [default = PRESENCE_LEVEL_NONE];
 	optional bool moderator_mute = 4;
 	optional .bgs.protocol.club.v1.WhisperLevel whisper_level = 5 [default = WHISPER_LEVEL_OPEN];
+	optional string note = 6;
 }
