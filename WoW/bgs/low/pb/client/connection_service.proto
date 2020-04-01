@@ -72,6 +72,7 @@ message EncryptRequest {
 
 service ConnectionService {
 	option (service_options).descriptor_name = "bnet.protocol.connection.ConnectionService";
+	option (service_options).shard_name = "connection";
 	option (sdk_service_options).inbound = true;
 	option (sdk_service_options).outbound = true;
 
