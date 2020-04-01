@@ -33,6 +33,7 @@ message UpdateClubSharedSettingsRequest {
 message GetStreamMentionsRequest {
 	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
 	optional .bgs.protocol.GetEventOptions options = 2;
+	optional bool fetch_messages = 3;
 }
 
 message GetStreamMentionsResponse {
